@@ -1,9 +1,16 @@
 package program;
 
+import static org.junit.Assert.assertEquals;
+
+import org.junit.*;
+
 public class TestsForProgramDevelopment {
 
-	public TestsForProgramDevelopment() {
-		// TODO Auto-generated constructor stub
+	@Test
+	public void GetStoreCapital() {
+		Store a = new Store();
+		System.out.println(a.getStoreCapital());
+		assertEquals("$1,000,000.00", a.getStoreCapital());
 	}
 
 }
