@@ -2,7 +2,7 @@ package program;
 
 /**
  * 
- * @author LoLsA
+ * @author 
  *
  */
 public class Manifest {
