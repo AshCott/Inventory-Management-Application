@@ -1,10 +1,12 @@
-package program;
+package testPrograms;
 
 import static org.junit.Assert.assertEquals;
 
-import org.junit.*;
+import org.junit.Test;
 
-public class TestsForProgramDevelopment {
+import program.Store;
+
+public class StoreClassTests {
 
 	@Test
 	public void GetStoreCapital() {
