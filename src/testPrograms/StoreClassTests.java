@@ -7,23 +7,21 @@ import org.junit.*;
 import program.Store;
 
 public class StoreClassTests {
-	Store a;
+	Store superMart;
 	
 	@Before
 	public void constructor() {
-		a = new Store();
-		a.setCapital(1000000.00);
-		a.setName("Woolworths");
+		superMart = new Store();
 	}
 	
 	@Test
 	public void GetStoreCapital() {
-		assertEquals("$1,000,000.00", a.getStoreCapital());
+		assertEquals("$100,000.00", superMart.getStoreCapital());
 	}
 	
 	@Test
 	public void GetStoreName() {
-		assertEquals("Woolworths", a.getStoreName());
+		assertEquals("SuperMart", superMart.getStoreName());
 	}
 
 }

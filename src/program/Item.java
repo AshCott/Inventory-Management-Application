@@ -11,11 +11,11 @@ public class Item {
 	private String Name;
 	private double ManufactureCost;
 	private double SellPrice;
-	private double ReorderPoint;
-	private double ReorderAmount;
+	private int ReorderPoint;
+	private int ReorderAmount;
 	private double Temperature;
 	
-	public Item(String name, double sellPrice, double reorderAmount, double reorderPoint, double temperature) {
+	public Item(String name, double sellPrice, int reorderAmount, int reorderPoint, double temperature) {
 		this.Name = name;
 		this.SellPrice = sellPrice;
 		this.ReorderAmount = reorderAmount;
@@ -23,10 +23,15 @@ public class Item {
 		this.Temperature = temperature;
 	}
 	
+	public Item(String name, double sellPrice, int reorderAmount, int reorderPoint) {
+		this.Name = name;
+		this.SellPrice = sellPrice;
+		this.ReorderAmount = reorderAmount;
+		this.ReorderPoint = reorderPoint;
+	}
+	
 	public double getTemperature() {
 		return Temperature;
-	}
-
-	
+	}	
 
 }

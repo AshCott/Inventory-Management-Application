@@ -13,23 +13,8 @@ public class Store {
 	
 	public Store() {
 		// TODO Auto-generated constructor stub
-	}
-	
-	/**
-	 * 
-	 * @param Takes a double and sets it as the stores capital
-	 */
-	public void setCapital(double capital) {
-		this.capital = capital;
-	}
-	
-	/**
-	 * @
-	 * @param Takes a string and sets it as the stores name
-	 * @
-	 */
-	public void setName(String name) {
-		this.name = name;
+		this.name = "SuperMart";
+		this.capital = 100000;
 	}
 	
 	/**
