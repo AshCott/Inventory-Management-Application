@@ -8,11 +8,28 @@ import java.text.DecimalFormat;
  *
  */
 public class Store {
-	double storeCapital;
+	String name;
+	double capital;
 	
 	public Store() {
 		// TODO Auto-generated constructor stub
-		this.storeCapital = 1000000; 
+	}
+	
+	/**
+	 * 
+	 * @param Takes a double and sets it as the stores capital
+	 */
+	public void setCapital(double capital) {
+		this.capital = capital;
+	}
+	
+	/**
+	 * @
+	 * @param Takes a string and sets it as the stores name
+	 * @
+	 */
+	public void setName(String name) {
+		this.name = name;
 	}
 	
 	/**
@@ -21,7 +38,15 @@ public class Store {
 	 */
 	public String getStoreCapital() {
 		DecimalFormat formatter = new DecimalFormat("#,###.00");
-		return "$" + formatter.format(storeCapital);
+		return "$" + formatter.format(capital);
+	}
+	
+	/**
+	 * 
+	 * @return The Store Name as String
+	 */
+	public String getStoreName() {
+		return this.name;
 	}
 
 }
