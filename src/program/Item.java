@@ -32,18 +32,6 @@ public class Item {
 		this.ReorderPoint = reorderPoint;
 	}
 	
-	public ArrayList<List> readCSVFile() throws IOException {
-		Scanner s = new Scanner(new File("item_properties.csv"));
-		ArrayList<List> list = new ArrayList<List>();
-		while (s.hasNext()){
-			String data = s.next();
-			List<String> item = Arrays.asList(data.split("\\s*,\\s*"));
-		    list.add(item);
-		}
-		s.close();
 
-		return list;
-		
-	}
 
 }
