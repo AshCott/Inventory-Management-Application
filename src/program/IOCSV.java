@@ -7,12 +7,24 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
+
+/**
+ * 
+ * @author Ashley Cottrell
+ *
+ */
 public class IOCSV {
 
 	public IOCSV() {
 		// TODO Auto-generated constructor stub
 	}
 	
+	/**
+	 * 
+	 * @param Takes file location as a String
+	 * @return a 2D array with the items from the CSV
+	 * @throws IOException
+	 */
 	public ArrayList<List> readCSVFile(String file) throws IOException {
 		Scanner s = new Scanner(new File(file));
 		ArrayList<List> list = new ArrayList<List>();
