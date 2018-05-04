@@ -2,9 +2,11 @@ package program;
 
 public class OrdinaryTruck extends Truck {
 
+
+
 	@Override
-	public double Cost() {
-		// TODO Auto-generated method stub
+	public double Cost(Item e) { 
+		
 		return 0;
 	}
 

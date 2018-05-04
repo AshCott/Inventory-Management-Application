@@ -30,7 +30,13 @@ public class Item {
 		this.SellPrice = sellPrice;
 		this.ReorderAmount = reorderAmount;
 		this.ReorderPoint = reorderPoint;
+		this.Temperature = temperature;
 	}
+	
+	public double getTemperature() {
+		return Temperature;
+	}
+
 	
 
 
