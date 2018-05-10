@@ -11,7 +11,7 @@ public class StoreClassTests {
 	
 	@Before
 	public void constructor() {
-		superMart = new Store();
+		superMart = Store.getInstance();
 	}
 	
 	@Test
