@@ -1,6 +1,9 @@
 package program;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -26,16 +29,18 @@ public class IOCSV {
 	 * @throws IOException
 	 */
 	public ArrayList<List> readCSVFile(String file) throws IOException {
-		Scanner s = new Scanner(new File(file));
-		ArrayList<List> list = new ArrayList<List>();
-		while (s.hasNext()){
-			String data = s.next();
-			List<String> item = Arrays.asList(data.split("\\s*,\\s*"));
-		    list.add(item);
-		}
-		s.close();
-
+	    BufferedReader br = new BufferedReader(new FileReader(file));
+	    String line = null;
+	    ArrayList<List> list = new ArrayList<List>();
+	    while ((line = br.readLine()) != null) {
+	      String[] values = line.split(",");
+	      List<String> temp = new ArrayList<String>();
+	      for (String str : values) {
+	    	  temp.add(str);
+	      }
+	      list.add(temp);
+	    }
+	    br.close();
 		return list;
-		
 	}
 }
