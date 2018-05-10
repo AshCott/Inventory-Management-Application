@@ -10,13 +10,17 @@ import java.text.DecimalFormat;
 public class Store {
 	String name;
 	double capital;
-	
-	public Store() {
+	private static Store firstInstance = new Store();
+
+	private Store() {
 		// TODO Auto-generated constructor stub
 		this.name = "SuperMart";
 		this.capital = 100000;
 	}
 	
+	public static Store getInstance() {
+		return firstInstance;
+	}
 	/**
 	 * 
 	 * @return The formatted store capital as currency i.e. $1,000,000
