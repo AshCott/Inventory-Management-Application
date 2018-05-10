@@ -1,6 +1,9 @@
 package program;
 
+import java.io.IOException;
 import java.text.DecimalFormat;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * 
@@ -10,6 +13,7 @@ import java.text.DecimalFormat;
 public class Store {
 	String name;
 	double capital;
+	Stock inventory = new Stock();
 	
 	public Store() {
 		// TODO Auto-generated constructor stub
@@ -34,4 +38,21 @@ public class Store {
 		return this.name;
 	}
 
+	public void creatInventory(String file) throws IOException {
+		IOCSV importer = new IOCSV();
+		ArrayList<List> inventorylist = importer.readCSVFile(file);
+		inventory.creatInventory(inventorylist);		
+	}
+	
+	public void importSalesLog(String file) throws IOException {
+		IOCSV importer = new IOCSV();
+		ArrayList<List> salesLog = importer.readCSVFile(file);
+		System.out.println(salesLog);
+	}
+	
+	public void importManifest(String file) throws IOException {
+		IOCSV importer = new IOCSV();
+		ArrayList<List> manifest = importer.readCSVFile(file);
+		System.out.println(manifest);
+	}
 }
