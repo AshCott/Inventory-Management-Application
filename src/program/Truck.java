@@ -1,8 +1,20 @@
 package program;
 
+import java.util.ArrayList;
+
 public abstract class Truck {
-	private int capacity;
+	protected double capacity;
+	protected double cost;
+	private ArrayList<Item> cargo;
 	
-	public abstract double Cost(Item e);
+	public double costCalculation(double tempQuant) {
+		return cost;
+	}
+	public double cargoCaps() {
+		return capacity;
+	}
+	public Truck() {
+		
+	}
 
 }

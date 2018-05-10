@@ -9,6 +9,7 @@ public class TruckTest {
 	Truck truck;
 	OrdinaryTruck truckOrdinary;
 	RefrigratedTruck truckRefrigrated;
+	
 	@Before
 	public void constructor() {
 		truckOrdinary = new OrdinaryTruck();
