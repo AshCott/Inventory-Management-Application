@@ -9,10 +9,11 @@ import program.*;
 
 public class ItemClassTests {
 	IOCSV importer;
-	
+	Store superMart;
 	@Before
 	public void constructor() {
 		importer = new IOCSV();
+		superMart = Store.getInstance();
 	}
 	
 	@Test
@@ -23,14 +24,13 @@ public class ItemClassTests {
 	
 	@Test
 	public void importItemProperties() throws IOException {
-		Store a = new Store();
-		a.creatInventory("item_properties.csv");
+		superMart.creatInventory("item_properties.csv");
 	}
 	
 	@Test
 	public void importManifest() throws IOException {
-		Store a = new Store();
-		a.importManifest("manifest.csv");
+
+		superMart.importManifest("manifest.csv");
 	}
 	
 	@Test
