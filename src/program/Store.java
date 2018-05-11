@@ -43,12 +43,22 @@ public class Store {
 		return this.name;
 	}
 	
+	/**
+	 * Import and process the inventory csv files
+	 * @param link to the csv file
+	 * @throws IOException
+	 */
 	public void creatInventory(String file) throws IOException {
 		IOCSV importer = new IOCSV();
 		inventorylist = importer.readCSVFile(file);
 		inventory.creatInventory(inventorylist);
 	}
 	
+	/**
+	 * Import and process the sales Log CSV files
+	 * @param link to the csv file
+	 * @throws IOException
+	 */
 	public void importSalesLog(String file) throws IOException {
 		IOCSV importer = new IOCSV();
 		double totalSales = 0.0;
