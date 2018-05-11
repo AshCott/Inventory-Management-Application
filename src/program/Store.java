@@ -45,18 +45,20 @@ public class Store {
 	public void creatInventory(String file) throws IOException {
 		IOCSV importer = new IOCSV();
 		ArrayList<List> inventorylist = importer.readCSVFile(file);
-		inventory.creatInventory(inventorylist);		
+		inventory.creatInventory(inventorylist);
+		Item a = inventory.getItem("pasta");
+		System.out.println(a.getName());
+		Item b = inventory.getItem("ice cream");
+		System.out.println(b.getName());
 	}
 	
 	public void importSalesLog(String file) throws IOException {
 		IOCSV importer = new IOCSV();
 		ArrayList<List> salesLog = importer.readCSVFile(file);
-		System.out.println(salesLog);
 	}
 	
 	public void importManifest(String file) throws IOException {
 		IOCSV importer = new IOCSV();
 		ArrayList<List> manifest = importer.readCSVFile(file);
-		System.out.println(manifest);
 	}
 }

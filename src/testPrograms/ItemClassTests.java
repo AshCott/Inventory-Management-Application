@@ -29,7 +29,6 @@ public class ItemClassTests {
 	
 	@Test
 	public void importManifest() throws IOException {
-
 		superMart.importManifest("manifest.csv");
 	}
 	
