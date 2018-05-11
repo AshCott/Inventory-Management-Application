@@ -11,14 +11,19 @@ import java.util.List;
  *
  */
 public class Store {
-	String name;
+	private String name;
 	double capital;
+	private static Store firstInstance = new Store();
+	
 	Stock inventory = new Stock();
 	
-	public Store() {
-		// TODO Auto-generated constructor stub
+	private Store() {
 		this.name = "SuperMart";
 		this.capital = 100000;
+	}	
+
+	public static Store getInstance() {
+		return firstInstance;
 	}
 	
 	/**
@@ -31,13 +36,12 @@ public class Store {
 	}
 	
 	/**
-	 * 
 	 * @return The Store Name as String
 	 */
 	public String getStoreName() {
 		return this.name;
 	}
-
+	
 	public void creatInventory(String file) throws IOException {
 		IOCSV importer = new IOCSV();
 		ArrayList<List> inventorylist = importer.readCSVFile(file);

@@ -14,7 +14,7 @@ public class ItemClassTests {
 	public void constructor() {
 		importer = new IOCSV();
 	}
-
+	
 	@Test
 	public void ReadItem_PropertiesFile() throws IOException {
 		//ArrayList<List> b = importer.readCSVFile("item_properties.csv");

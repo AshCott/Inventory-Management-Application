@@ -1,13 +1,20 @@
 package program;
 
 public class OrdinaryTruck extends Truck {
-
-
-
-	@Override
-	public double Cost(Item e) { 
+	double quantity = 1000;
+	
+	public OrdinaryTruck() {
 		
-		return 0;
 	}
-
+	@Override
+	public double costCalculation(double quantity) {
+		this.quantity = quantity;
+		cost = 750+ (0.25*quantity);
+		
+		return cost;
+	}
+	@Override
+	public double cargoCaps () {
+		return 1000;
+	}
 }
