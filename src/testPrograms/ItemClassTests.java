@@ -35,8 +35,7 @@ public class ItemClassTests {
 	
 	@Test
 	public void importSalesLog() throws IOException {
-		Store a = new Store();
-		a.importSalesLog("sales_log_0.csv");
+		superMart.importSalesLog("sales_log_0.csv");
 	}
 	
 }
