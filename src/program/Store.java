@@ -13,6 +13,7 @@ import java.util.List;
 public class Store {
 	private String name;
 	double capital;
+	ArrayList<List> inventorylist;
 	private static Store firstInstance = new Store();
 	
 	Stock inventory = new Stock();
@@ -44,17 +45,34 @@ public class Store {
 	
 	public void creatInventory(String file) throws IOException {
 		IOCSV importer = new IOCSV();
-		ArrayList<List> inventorylist = importer.readCSVFile(file);
+		inventorylist = importer.readCSVFile(file);
 		inventory.creatInventory(inventorylist);
-		Item a = inventory.getItem("pasta");
-		System.out.println(a.getName());
-		Item b = inventory.getItem("ice cream");
-		System.out.println(b.getName());
 	}
 	
 	public void importSalesLog(String file) throws IOException {
 		IOCSV importer = new IOCSV();
+		double totalSales = 0.0;
 		ArrayList<List> salesLog = importer.readCSVFile(file);
+		
+		//Loop though the sales log
+		for(List i : salesLog) {
+			
+			//Get Variables
+			String itemName = (String) i.get(0);
+			int numbSold = Integer.parseInt((String) i.get(1));
+			Item temp = inventory.getItem(itemName);
+			
+			//Calculate the total sales revenue
+			totalSales += temp.getSellPrice() * numbSold;
+			
+			//Change inventory ammount
+			int currentInventory = temp.getCurrentInventory();
+			currentInventory -= numbSold;
+			temp.setCurrentInventory(currentInventory);
+			System.out.println(numbSold+" "+temp.getCurrentInventory());	
+		}
+		//Increase the capital
+		capital += totalSales;
 	}
 	
 	public void importManifest(String file) throws IOException {

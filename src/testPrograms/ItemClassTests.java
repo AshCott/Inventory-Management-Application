@@ -29,11 +29,13 @@ public class ItemClassTests {
 	
 	@Test
 	public void importManifest() throws IOException {
+		superMart.creatInventory("item_properties.csv");
 		superMart.importManifest("manifest.csv");
 	}
 	
 	@Test
 	public void importSalesLog() throws IOException {
+		superMart.creatInventory("item_properties.csv");
 		superMart.importSalesLog("sales_log_0.csv");
 	}
 	
