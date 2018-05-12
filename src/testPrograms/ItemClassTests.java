@@ -1,5 +1,7 @@
 package testPrograms;
 
+import static org.junit.Assert.assertEquals;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -15,7 +17,6 @@ public class ItemClassTests {
 		importer = new IOCSV();
 		superMart = Store.getInstance();
 	}
-	
 	@Test
 	public void ReadItem_PropertiesFile() throws IOException {
 		//ArrayList<List> b = importer.readCSVFile("item_properties.csv");
@@ -32,7 +33,7 @@ public class ItemClassTests {
 		superMart.creatInventory("item_properties.csv");
 		superMart.importManifest("manifest.csv");
 	}
-	
+//	
 	@Test
 	public void importSalesLog() throws IOException {
 		superMart.creatInventory("item_properties.csv");
