@@ -69,7 +69,6 @@ public class Store {
 			
 			//Get Variables
 			String itemName = (String) i.get(0);
-//			System.out.println(itemName);
 			int numbSold = Integer.parseInt((String) i.get(1));
 			Item temp = inventory.getItem(itemName);
 			
@@ -80,7 +79,6 @@ public class Store {
 			int currentInventory = temp.getCurrentInventory();
 			currentInventory -= numbSold;
 			temp.setCurrentInventory(currentInventory);
-//			System.out.println(numbSold+" "+temp.getCurrentInventory());	
 		}
 		//Increase the capital
 		capital += totalSales;
@@ -116,7 +114,7 @@ public class Store {
 				currentInventory += numbBought;
 				temp.setCurrentInventory(currentInventory);
 				totalProductBought += temp.getManufactureCost() * numbBought;	
-				System.out.println(temp.getSellPrice() +" "+ numbBought + " "+ totalProductBought);
+				//System.out.println(temp.getSellPrice() +" "+ numbBought + " "+ totalProductBought);
 			}
 		}
 		capital -= totalProductBought;

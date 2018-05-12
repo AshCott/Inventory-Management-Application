@@ -17,6 +17,7 @@ public class ItemClassTests {
 		importer = new IOCSV();
 		superMart = Store.getInstance();
 	}
+	
 	@Test
 	public void ReadItem_PropertiesFile() throws IOException {
 		//ArrayList<List> b = importer.readCSVFile("item_properties.csv");
@@ -38,6 +39,9 @@ public class ItemClassTests {
 	public void importSalesLog() throws IOException {
 		superMart.creatInventory("item_properties.csv");
 		superMart.importSalesLog("sales_log_0.csv");
+		assertEquals("$129,330.00", superMart.getStoreCapital());
+		
+		
 	}
 	
 }
