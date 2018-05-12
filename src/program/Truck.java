@@ -5,6 +5,7 @@ import java.util.ArrayList;
 public abstract class Truck {
 	protected double capacity;
 	protected double cost;
+	private String truckType;
 	private ArrayList<Item> cargo;
 	
 	public double costCalculation(double tempQuant) {
@@ -15,6 +16,12 @@ public abstract class Truck {
 	}
 	public Truck() {
 		
+	}
+	public String getTruckType() {
+		return truckType;
+	}
+	public void setTruckType(String truckType) {
+		this.truckType = truckType;
 	}
 
 }
