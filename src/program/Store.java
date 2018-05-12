@@ -115,8 +115,8 @@ public class Store {
 				int currentInventory = temp.getCurrentInventory();
 				currentInventory += numbBought;
 				temp.setCurrentInventory(currentInventory);
-				totalProductBought += temp.getSellPrice() * numbBought;	
-				System.out.println(temp.getSellPrice());
+				totalProductBought += temp.getManufactureCost() * numbBought;	
+				System.out.println(temp.getSellPrice() +" "+ numbBought + " "+ totalProductBought);
 			}
 		}
 		capital -= totalProductBought;
