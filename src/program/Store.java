@@ -69,6 +69,7 @@ public class Store {
 			
 			//Get Variables
 			String itemName = (String) i.get(0);
+//			System.out.println(itemName);
 			int numbSold = Integer.parseInt((String) i.get(1));
 			Item temp = inventory.getItem(itemName);
 			
@@ -79,14 +80,45 @@ public class Store {
 			int currentInventory = temp.getCurrentInventory();
 			currentInventory -= numbSold;
 			temp.setCurrentInventory(currentInventory);
-			System.out.println(numbSold+" "+temp.getCurrentInventory());	
+//			System.out.println(numbSold+" "+temp.getCurrentInventory());	
 		}
 		//Increase the capital
 		capital += totalSales;
 	}
 	
 	public void importManifest(String file) throws IOException {
+		String itemName ="";
+		int numbBought = 0;
+		double totalProductBought = 0.0;
+		String truckType = "";
 		IOCSV importer = new IOCSV();
 		ArrayList<List> manifest = importer.readCSVFile(file);
+		for (List each: manifest ) {
+			if(each.get(0).toString().startsWith(">")) {
+				truckType = (String) each.get(0);
+				if (truckType.toString().equals(">Refrigerated")) {
+					RefrigratedTruck refTruck = new RefrigratedTruck();
+				}else if(truckType.toString().equals(">Ordinary")) {
+					OrdinaryTruck ordTruck = new OrdinaryTruck();
+				}
+			}else {
+				itemName = (String) each.get(0);
+				numbBought = Integer.parseInt((String) each.get(1));
+			}
+			//making sure that the itemName is not null 
+			if(inventory.getItem(itemName)==null) {
+				
+			}
+			//checking if the .get(0) is an item not an truck type, if not make calculation to capital
+			else if (!each.get(0).toString().equals(">Refrigerated")&&!each.get(0).toString().equals(">Ordinary")){
+				Item temp = inventory.getItem(itemName);
+				int currentInventory = temp.getCurrentInventory();
+				currentInventory += numbBought;
+				temp.setCurrentInventory(currentInventory);
+				totalProductBought += temp.getSellPrice() * numbBought;	
+				System.out.println(temp.getSellPrice());
+			}
+		}
+		capital -= totalProductBought;
 	}
 }
