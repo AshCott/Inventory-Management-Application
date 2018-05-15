@@ -33,4 +33,8 @@ public class TruckTest {
 		assertEquals(1100, truckRefrigrated.costCalculation(0),0.0002);
 
 	}
+	@Test
+	public void GetTruck() {
+		
+	}
 }
