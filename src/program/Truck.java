@@ -9,6 +9,7 @@ public abstract class Truck {
 	protected Integer itemCount;
 	private String truckType;
 	protected HashMap<String, Integer> items;
+	private double totalPrice;
 	
 	public Truck() {
 		this.items = new HashMap<String, Integer>();
@@ -40,6 +41,11 @@ public abstract class Truck {
 	public void getItem(String itemName) {
 		items.get(itemName);
 	}
-
+	public void setTotalPriceInTruck(double totalPrice) {
+		this.totalPrice = totalPrice;
+	}
+	public double getTotalPriceInTruck() {
+		return totalPrice;
+	}
 
 }
