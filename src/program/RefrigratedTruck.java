@@ -9,7 +9,7 @@ public class RefrigratedTruck extends Truck {
 	@Override
 	public double costCalculation(double temperature) {
 		this.temperature = temperature;
-		cost = 900+(200*Math.pow(0.7, (temperature/5)));
+		cost = Math.round(900+(200*Math.pow(0.7, (temperature/5))));
 		return cost;
 	}
 	@Override
@@ -30,4 +30,6 @@ public class RefrigratedTruck extends Truck {
 	public void setTemperature(double temperature) {
 		this.temperature = temperature;
 	}
+	
+
 }
