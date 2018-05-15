@@ -1,10 +1,12 @@
 package program;
 
+import java.util.HashMap;
+
 public class OrdinaryTruck extends Truck {
-	double quantity = 1000;
-	
+	private double quantity;
+
 	public OrdinaryTruck() {
-		
+		super();
 	}
 	@Override
 	public double costCalculation(double quantity) {
@@ -17,4 +19,17 @@ public class OrdinaryTruck extends Truck {
 	public double cargoCaps () {
 		return 1000;
 	}
+	
+	@Override
+	public void addItem(String itemName, Integer quantity) {
+		items.put(itemName, quantity);
+		itemCount += quantity;
+ 	}
+	public void setQuantity(double quantity) {
+		this.quantity = quantity;
+	}
+	public double getQuantity() {
+		return quantity;
+	}
+
 }
