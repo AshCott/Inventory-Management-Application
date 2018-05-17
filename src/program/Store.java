@@ -3,6 +3,7 @@ package program;
 import java.io.IOException;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -52,6 +53,7 @@ public class Store {
 		IOCSV importer = new IOCSV();
 		inventorylist = importer.readCSVFile(file);
 		inventory.creatInventory(inventorylist);
+		System.out.println("Success :DDDDDDD");
 	}
 	
 	/**
@@ -264,5 +266,10 @@ public class Store {
 
 
 		System.out.println(capital);
+	}
+	
+	public HashMap<String, Item> getInventory() {
+		HashMap<String, Item> temp = inventory.getInventory();
+		return temp;
 	}
 }
