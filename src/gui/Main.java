@@ -23,6 +23,8 @@ public class Main {
 	
 	DefaultTableModel model;
 	
+	boolean invImported = false;
+	
 	public Main(String title) {
 		// TODO Auto-generated constructor stub
 				mainFrame = new JFrame(title);
@@ -63,6 +65,7 @@ public class Main {
 			    model.addColumn("Re-Order Point");
 			    model.addColumn("Re-Order Amount");
 			    model.addColumn("Tempeture");
+			    model.addColumn("Inventory");
 			    
 				//Add objects to frame
 				mainFrame.add(headerLabel);
@@ -92,6 +95,12 @@ public class Main {
 	}
 	
 	private void updateTable() {
+		if(invImported == true) {
+			int rowCount = model.getRowCount();
+			for (int i = rowCount - 1; i >= 0; i--) {
+			    model.removeRow(i);
+			}
+		}
 		HashMap<String, Item> tempinventory = superMart.getInventory();
 		TreeMap<String, Item> inventory = new TreeMap<String, Item>();
 		inventory.putAll(tempinventory);
@@ -103,6 +112,7 @@ public class Main {
 						, inventory.get(key).getReorderPoint()
 						, inventory.get(key).getReorderAmount()
 						, inventory.get(key).getTemperature()
+						, inventory.get(key).getCurrentInventory()
 						});
 			}else {
 				model.addRow(new Object[]{inventory.get(key).getName()
@@ -111,6 +121,7 @@ public class Main {
 						, inventory.get(key).getReorderPoint()
 						, inventory.get(key).getReorderAmount()
 						, "N/A"
+						, inventory.get(key).getCurrentInventory()
 						});
 			}
 			
@@ -134,28 +145,32 @@ public class Main {
 					e1.printStackTrace();
 				}
 	        	 updateTable();
+	        	 invImported = true;
 	        	 break;
 	        	 
 	         case "Sales_Log" :
 	        	 try {
-					superMart.importSalesLog(file);
+					superMart.importSalesLog("sales_log_0.csv");
 				} catch (IOException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
+	        	 updateTable();
 	        	 break;
 	        	 
 	         case "ImportManifest" :
 	        	 try {
-					superMart.importManifest(file);
+					superMart.importManifest("manifest2.csv");
 				} catch (IOException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
+	        	 updateTable();
 	        	 break;
 	        	 
 	         case "ExportManifest" :
 	        	 System.out.println("EXM");
+	        	 
 	        	 break;
 	         
 	         }
