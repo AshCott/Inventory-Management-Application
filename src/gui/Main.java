@@ -13,8 +13,14 @@ import java.util.TreeMap;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 
+/**
+ * Main Method for running the program
+ * @author Ashley Cottrell
+ *
+ */
 public class Main {
 	
+	//Public variables
 	Store superMart = Store.getInstance();
 
 	JFrame mainFrame;
@@ -26,6 +32,10 @@ public class Main {
 	
 	boolean invImported = false;
 	
+	/**
+	 * GUI setup method
+	 * @param Sets the title of the program
+	 */
 	public Main(String title) {
 		// TODO Auto-generated constructor stub
 				mainFrame = new JFrame(title);
@@ -46,11 +56,13 @@ public class Main {
 			    JButton inpManifestBtn = new JButton("Import Manifest");
 			    JButton expManifestBtn = new JButton("Export Manifest");
 			    
+			    //Set action command on button press
 			    inventoryBtn.setActionCommand("Inventory");
 			    salesLogBtn.setActionCommand("Sales_Log");
 			    inpManifestBtn.setActionCommand("ImportManifest");
 			    expManifestBtn.setActionCommand("ExportManifest");
 			    
+			    //Create button listener for buttons
 			    inventoryBtn.addActionListener(new ButtonClickListener());		
 			    salesLogBtn.addActionListener(new ButtonClickListener());
 			    inpManifestBtn.addActionListener(new ButtonClickListener());
@@ -82,6 +94,10 @@ public class Main {
 				mainFrame.setVisible(true);
 	}
 
+	/**
+	 * Opens a window where the user can select a file
+	 * @return the address of the selected files location as a String
+	 */
 	private String fileChooserWindow() {
 		JFileChooser fileChooser = new JFileChooser();
 		int result = fileChooser.showOpenDialog(mainFrame);
@@ -95,16 +111,25 @@ public class Main {
    		}
 	}
 	
+	/**
+	 * Displays and updates the data in the table on the main form.
+	 */
 	private void updateTable() {
+		
+		//Clears the table if values exist
 		if(invImported == true) {
 			int rowCount = model.getRowCount();
 			for (int i = rowCount - 1; i >= 0; i--) {
 			    model.removeRow(i);
 			}
 		}
+		
+		//Convert HashMap to TreeMap so inventory Items are sorted
 		HashMap<String, Item> tempinventory = superMart.getInventory();
 		TreeMap<String, Item> inventory = new TreeMap<String, Item>();
 		inventory.putAll(tempinventory);
+		
+		//Add items as new row in table
 		for(String key : inventory.keySet()) {
 			if(inventory.get(key).hasTempreture()) {
 				model.addRow(new Object[]{inventory.get(key).getName()
@@ -129,12 +154,19 @@ public class Main {
 		}
 	}
 	
+	/**
+	 * Waits until button has been pressed and runs the appropiate function
+	 * @author Ashley Cottrell
+	 *
+	 */
 	private class ButtonClickListener implements ActionListener{
 	      public void actionPerformed(ActionEvent e) {
+	    	 //Get Variables
 	         String command = e.getActionCommand();  
 	         //String file = fileChooserWindow();
 	         String file = "item_properties.csv";
 	         
+	         //What button was pressed
 	         switch(command) {
 	         
 	         case "Inventory" :
@@ -178,6 +210,10 @@ public class Main {
 	      }		
 	   }
 	
+	/**
+	 * Main method for running the program
+	 * @param none
+	 */
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		new Main("Inventory Management Application");
