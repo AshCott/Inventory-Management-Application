@@ -18,8 +18,9 @@ public class Main {
 	Store superMart = Store.getInstance();
 
 	JFrame mainFrame;
-	JLabel headerLabel;
+	JLabel capitalLbl;
 	JPanel controlPanel;
+	JButton inventoryBtn;
 	
 	DefaultTableModel model;
 	
@@ -35,12 +36,12 @@ public class Main {
 				mainFrame.setLayout(new GridLayout(3, 1));
 				
 				//Create Panels
-				headerLabel = new JLabel("Main Menu",JLabel.CENTER );
+				capitalLbl = new JLabel("Main Menu",JLabel.CENTER );
 				controlPanel = new JPanel();
 			    controlPanel.setLayout(new FlowLayout());
 			    
 			    //Create Buttons
-				JButton inventoryBtn = new JButton("Import Inventory");
+				inventoryBtn = new JButton("Import Inventory");
 			    JButton salesLogBtn = new JButton("Import Sales Log");
 			    JButton inpManifestBtn = new JButton("Import Manifest");
 			    JButton expManifestBtn = new JButton("Export Manifest");
@@ -68,7 +69,7 @@ public class Main {
 			    model.addColumn("Inventory");
 			    
 				//Add objects to frame
-				mainFrame.add(headerLabel);
+				mainFrame.add(capitalLbl);
 				mainFrame.add(controlPanel);
 				 
 			    controlPanel.add(inventoryBtn);
@@ -123,9 +124,8 @@ public class Main {
 						, "N/A"
 						, inventory.get(key).getCurrentInventory()
 						});
+			capitalLbl.setText(superMart.getStoreCapital());
 			}
-			
-			
 		}
 	}
 	
@@ -145,6 +145,7 @@ public class Main {
 					e1.printStackTrace();
 				}
 	        	 updateTable();
+	        	 inventoryBtn.setEnabled(false);
 	        	 invImported = true;
 	        	 break;
 	        	 
