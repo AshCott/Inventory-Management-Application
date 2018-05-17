@@ -46,6 +46,11 @@ public class Stock {
 		return inventory.get(name);
 	}
 	
+	public HashMap<String, Item> getInventory() {
+		return inventory;
+		
+	}
+	
 	public void increaseItemAmount(String name) {
 		int a = inventory.get(name).getCurrentInventory();
 		inventory.get(name).setCurrentInventory(5557);
