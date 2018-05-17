@@ -15,6 +15,7 @@ public class Item {
 	private int ReorderAmount;
 	private double Temperature;
 	private int CurrentInventory;
+	private boolean hasTemp;
 	
 	/**
 	 * Create a new Refreigerated Item
@@ -32,6 +33,7 @@ public class Item {
 		this.ReorderAmount = reorderAmount;
 		this.ReorderPoint = reorderPoint;
 		this.Temperature = temperature;
+		this.hasTemp = true;
 		this.CurrentInventory = 0;
 	}
 	
@@ -50,6 +52,7 @@ public class Item {
 		this.ReorderAmount = reorderAmount;
 		this.ReorderPoint = reorderPoint;
 		this.CurrentInventory = 0;
+		this.hasTemp = false;
 	}
 	
 	/**
@@ -85,7 +88,7 @@ public class Item {
 	}	
 	
 	public boolean hasTempreture() {
-		if(Temperature != 0) {
+		if(hasTemp) {
 			return true;
 		}else {
 			return false;
