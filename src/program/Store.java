@@ -269,6 +269,10 @@ public class Store {
 		System.out.println(capital);
 	}
 	
+	/**
+	 * return all the items in the inventory
+	 * @return HashMap of all items in inventory
+	 */
 	public HashMap<String, Item> getInventory() {
 		HashMap<String, Item> temp = inventory.getInventory();
 		return temp;
