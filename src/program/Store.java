@@ -53,7 +53,7 @@ public class Store {
 		IOCSV importer = new IOCSV();
 		inventorylist = importer.readCSVFile(file);
 		inventory.creatInventory(inventorylist);
-		System.out.println("Success :DDDDDDD");
+		System.out.println("Import Inventory: Success");
 	}
 	
 	/**
@@ -85,6 +85,7 @@ public class Store {
 		}
 		//Increase the capital
 		capital += totalSales;
+		System.out.println("Import Sales Log: Success");
 	}
 	
 //	public void importManifest(String file) throws IOException {
