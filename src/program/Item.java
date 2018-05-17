@@ -84,6 +84,15 @@ public class Item {
 		return this.ReorderPoint;
 	}	
 	
+	public boolean hasTempreture() {
+		if(Temperature != 0) {
+			return true;
+		}else {
+			return false;
+		}
+		
+	}
+	
 	public double getTemperature() {
 		return Temperature;
 	}	
