@@ -27,9 +27,6 @@ public class Main {
 	JLabel capitalLbl;
 	JPanel controlPanel;
 	JButton inventoryBtn;
-	JButton salesLogBtn;
-    JButton inpManifestBtn;
-    JButton expManifestBtn;
 	
 	DefaultTableModel model;
 	
@@ -55,15 +52,10 @@ public class Main {
 			    
 			    //Create Buttons
 				inventoryBtn = new JButton("Import Inventory");
-			    salesLogBtn = new JButton("Import Sales Log");
-			    inpManifestBtn = new JButton("Import Manifest");
-			    expManifestBtn = new JButton("Export Manifest");
+			    JButton salesLogBtn = new JButton("Import Sales Log");
+			    JButton inpManifestBtn = new JButton("Import Manifest");
+			    JButton expManifestBtn = new JButton("Export Manifest");
 			    
-			    //Disable buttons on startup
-			    salesLogBtn.setEnabled(false);
-			    inpManifestBtn.setEnabled(false);
-			    expManifestBtn.setEnabled(false);
-
 			    //Set action command on button press
 			    inventoryBtn.setActionCommand("Inventory");
 			    salesLogBtn.setActionCommand("Sales_Log");
@@ -186,9 +178,6 @@ public class Main {
 				}
 	        	 updateTable();
 	        	 inventoryBtn.setEnabled(false);
-				    salesLogBtn.setEnabled(true);
-				    inpManifestBtn.setEnabled(true);
-				    expManifestBtn.setEnabled(true);
 	        	 invImported = true;
 	        	 break;
 	        	 
