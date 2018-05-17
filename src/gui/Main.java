@@ -1,9 +1,15 @@
 package gui;
+import program.Item;
 import program.Store;
 
 import java.awt.*;
 import java.awt.event.*;
 import java.io.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.TreeMap;
+
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 
@@ -14,6 +20,8 @@ public class Main {
 	JFrame mainFrame;
 	JLabel headerLabel;
 	JPanel controlPanel;
+	
+	DefaultTableModel model;
 	
 	public Main(String title) {
 		// TODO Auto-generated constructor stub
@@ -46,7 +54,7 @@ public class Main {
 			    expManifestBtn.addActionListener(new ButtonClickListener());
 			    
 			    //Create JTable
-			    DefaultTableModel model = new DefaultTableModel(); 
+			    model = new DefaultTableModel(); 
 			    JTable table = new JTable(model);
 			    JScrollPane sp=new JScrollPane(table); 
 			    model.addColumn("Name");
@@ -55,7 +63,7 @@ public class Main {
 			    model.addColumn("Re-Order Point");
 			    model.addColumn("Re-Order Amount");
 			    model.addColumn("Tempeture");
-				
+			    
 				//Add objects to frame
 				mainFrame.add(headerLabel);
 				mainFrame.add(controlPanel);
@@ -84,15 +92,40 @@ public class Main {
 	}
 	
 	private void updateTable() {
-		
+		HashMap<String, Item> tempinventory = superMart.getInventory();
+		TreeMap<String, Item> inventory = new TreeMap<String, Item>();
+		inventory.putAll(tempinventory);
+		for(String key : inventory.keySet()) {
+			if(inventory.get(key).hasTempreture()) {
+				model.addRow(new Object[]{inventory.get(key).getName()
+						, inventory.get(key).getManufactureCost()
+						, inventory.get(key).getSellPrice()
+						, inventory.get(key).getReorderPoint()
+						, inventory.get(key).getReorderAmount()
+						, inventory.get(key).getTemperature()
+						});
+			}else {
+				model.addRow(new Object[]{inventory.get(key).getName()
+						, inventory.get(key).getManufactureCost()
+						, inventory.get(key).getSellPrice()
+						, inventory.get(key).getReorderPoint()
+						, inventory.get(key).getReorderAmount()
+						, "N/A"
+						});
+			}
+			
+			
+		}
 	}
 	
 	private class ButtonClickListener implements ActionListener{
 	      public void actionPerformed(ActionEvent e) {
 	         String command = e.getActionCommand();  
-	         String file = fileChooserWindow();
+	         //String file = fileChooserWindow();
+	         String file = "item_properties.csv";
 	         
 	         switch(command) {
+	         
 	         case "Inventory" :
 	        	 try {
 					superMart.creatInventory(file);
@@ -100,6 +133,7 @@ public class Main {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
+	        	 updateTable();
 	        	 break;
 	        	 
 	         case "Sales_Log" :
@@ -130,7 +164,7 @@ public class Main {
 	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		new Main("My Application");
+		new Main("Inventory Management Application");
 	}
 
 }
