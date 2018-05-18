@@ -252,21 +252,16 @@ public class Store {
 			}
 			
 		}//end loop
-		capital = 100000.0;
-		System.out.println(capital);
 		for (OrdinaryTruck each: manifest.ornTruck) {
 			capital-=each.costCalculation(each.getQuantity());
 			capital-=each.getTotalPriceInTruck();
 		}
-		System.out.println(capital);
 		for (RefrigratedTruck each : manifest.refTruck) {
 			capital-=each.costCalculation(each.getTemperature());
 			//calculating each item
 			capital-=each.getTotalPriceInTruck();
 		}
-
-
-		System.out.println(capital);
+		System.out.println("Import Manifest: Success");
 	}
 	
 	/**
