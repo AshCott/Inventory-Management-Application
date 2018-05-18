@@ -1,17 +1,20 @@
 package program;
 import java.lang.Math.*;
 public class RefrigratedTruck extends Truck {
-	double temperature;
-	
+	private double temperature;
+	private final double MAX_TEMPERATURE = 10;
+	private final double MIN_TEMPERATURE = -20;
 	public RefrigratedTruck () {
 		super();
 	}
+	
 	@Override
 	public double costCalculation(double temperature) {
 		this.temperature = temperature;
 		cost = Math.round(900+(200*Math.pow(0.7, (temperature/5))));
 		return cost;
 	}
+
 	@Override
 	public double cargoCaps () {
 		capacity = 800;
