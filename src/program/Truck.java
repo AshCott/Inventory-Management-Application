@@ -28,6 +28,7 @@ public abstract class Truck {
 	}
 	
 	public String getTruckType() {
+		
 		return truckType;
 	}
 	public void setTruckType(String truckType) {
@@ -45,7 +46,9 @@ public abstract class Truck {
 		this.totalPrice = totalPrice;
 	}
 	public double getTotalPriceInTruck() {
+
 		return totalPrice;
 	}
+	
 
 }

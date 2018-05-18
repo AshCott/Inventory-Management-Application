@@ -4,7 +4,6 @@ import java.util.HashMap;
 
 public class OrdinaryTruck extends Truck {
 	private double quantity;
-
 	public OrdinaryTruck() {
 		super();
 	}
@@ -12,12 +11,13 @@ public class OrdinaryTruck extends Truck {
 	public double costCalculation(double quantity) {
 		this.quantity = quantity;
 		cost = 750+ (0.25*quantity);
-		
 		return cost;
 	}
+	
 	@Override
 	public double cargoCaps () {
-		return 1000;
+		capacity = 1000;
+		return capacity;
 	}
 	
 	@Override
@@ -25,9 +25,11 @@ public class OrdinaryTruck extends Truck {
 		items.put(itemName, quantity);
 		itemCount += quantity;
  	}
+	
 	public void setQuantity(double quantity) {
 		this.quantity = quantity;
 	}
+	
 	public double getQuantity() {
 		return quantity;
 	}
