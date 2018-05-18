@@ -42,7 +42,7 @@ public class ItemClassTests {
 		superMart.creatInventory("item_properties.csv");
 		superMart.importSalesLog("sales_log_0.csv");
 		assertEquals("$129,330.00", superMart.getStoreCapital());
-		
+		System.out.println("a");
 		
 	}
 
