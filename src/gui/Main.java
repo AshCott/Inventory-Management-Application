@@ -43,7 +43,7 @@ public class Main {
 		// TODO Auto-generated constructor stub
 				mainFrame = new JFrame(title);
 				mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-				mainFrame.setSize(1000,1000);
+				mainFrame.setSize(750,500);
 				
 				//Set layout
 				mainFrame.setLayout(new GridLayout(3, 1));
