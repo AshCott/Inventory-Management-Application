@@ -119,11 +119,13 @@ public class Store {
 					isOrdinary = false;
 					totalPriceInRefrigrated = 0.0;
 				}else if (content.equals(">Ordinary")) {
+
 					ornTruck = new OrdinaryTruck();
 					manifest.saveOrnTruck(ornTruck);
 					isOrdinary = true;
 					isRefrigerated = false;
 					totalPriceInOrdinary = 0.0;
+					totalProductBoughtOrdinary=0.0;
 				}
 
 //				if (refTruck != null) {
@@ -143,6 +145,7 @@ public class Store {
 					itemName = (String) content;
 					Item temp = inventory.getItem(itemName);
 					totalProductBoughtOrdinary +=numbBought;
+					System.out.println(totalProductBoughtOrdinary);
 					ornTruck.setQuantity(totalProductBoughtOrdinary);
 					if (temp!=null) {
 						//update the current inventory
@@ -179,10 +182,13 @@ public class Store {
 		}//end loop
 		for (OrdinaryTruck each: manifest.ornTruck) {
 			capital-=each.costCalculation(each.getQuantity());
+			System.out.println(each.costCalculation(each.getQuantity()));
 			capital-=each.getTotalPriceInTruck();
+			System.out.println(each.getTotalPriceInTruck());
 		}
 		for (RefrigratedTruck each : manifest.refTruck) {
 			capital-=each.costCalculation(each.getTemperature());
+			
 			//calculating each item
 			capital-=each.getTotalPriceInTruck();
 		}

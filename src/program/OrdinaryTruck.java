@@ -10,7 +10,9 @@ public class OrdinaryTruck extends Truck {
 	@Override
 	public double costCalculation(double quantity) {
 		this.quantity = quantity;
+		System.out.println("Quantity: "+quantity);
 		cost = 750+ (0.25*quantity);
+		System.out.println("Cost: "+cost);
 		return cost;
 	}
 	

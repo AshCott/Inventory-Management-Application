@@ -204,7 +204,7 @@ public class Main {
 	        	 
 	         case "ImportManifest" :
 	        	 try {
-					superMart.importManifest("manifest2.csv");
+					superMart.importManifest("manifest4.csv");
 				} catch (IOException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
