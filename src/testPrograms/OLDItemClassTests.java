@@ -3,15 +3,13 @@ package testPrograms;
 import static org.junit.Assert.assertEquals;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.*;
+import program.*;
 
-import program.IOCSV;
-import program.Store;
-
-public class ItemClassTests {
-	
+public class OLDItemClassTests {
 	IOCSV importer;
 	Store superMart;
 	@Before
@@ -45,5 +43,5 @@ public class ItemClassTests {
 		
 		
 	}
-
+	
 }
