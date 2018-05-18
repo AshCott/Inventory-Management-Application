@@ -10,7 +10,7 @@ import org.junit.Test;
 import program.IOCSV;
 import program.Store;
 
-public class ItemClassTests {
+public class ItemClassTests2 {
 	
 	IOCSV importer;
 	Store superMart;
