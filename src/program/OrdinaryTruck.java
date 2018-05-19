@@ -4,8 +4,15 @@ import java.util.HashMap;
 
 public class OrdinaryTruck extends Truck {
 	private double quantity;
+	private final double CARGO_CAPACITY= 1000;	
 	public OrdinaryTruck() {
-		super();
+		this.items = new HashMap<String, Integer>();
+		this.itemCount =0;
+	}
+	
+	@Override
+	public boolean isCargoFull() {
+		return(this.CARGO_CAPACITY==this.quantity);
 	}
 	@Override
 	public double costCalculation(double quantity) {
@@ -15,25 +22,29 @@ public class OrdinaryTruck extends Truck {
 		System.out.println("Cost: "+cost);
 		return cost;
 	}
-	
-	@Override
-	public double cargoCaps () {
-		capacity = 1000;
-		return capacity;
+	@Override	
+	public double getQuantity() {
+		return quantity;
 	}
-	
+	@Override
+	public void setQuantity(double quantity) {
+		this.quantity = quantity;
+	}
+	@Override
+	public void setTotalPriceInTruck(double totalPrice) {
+		this.totalPrice = totalPrice;
+	}
+	@Override
+	public double getTotalPriceInTruck() {
+
+		return totalPrice;
+	}
 	@Override
 	public void addItem(String itemName, Integer quantity) {
 		items.put(itemName, quantity);
 		itemCount += quantity;
  	}
-	
-	public void setQuantity(double quantity) {
-		this.quantity = quantity;
-	}
-	
-	public double getQuantity() {
-		return quantity;
-	}
+
+
 
 }
