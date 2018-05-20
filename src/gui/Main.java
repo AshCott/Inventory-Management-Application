@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.TreeMap;
 
 import javax.swing.*;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -114,7 +115,9 @@ public class Main {
 	 * @return the address of the selected files location as a String
 	 */
 	private String fileChooserWindow() {
+		FileNameExtensionFilter filter = new FileNameExtensionFilter("CSV File", "csv");
 		JFileChooser fileChooser = new JFileChooser();
+		fileChooser.setFileFilter(filter);
 		int result = fileChooser.showOpenDialog(mainFrame);
 		//fileChooser.setCurrentDirectory(new File(System.getProperty("C:\\Users\\LoLsA\\Desktop\\CAB302 Assignment\\CAB302Ass2Group18")));
 		if (result == JFileChooser.APPROVE_OPTION) {
