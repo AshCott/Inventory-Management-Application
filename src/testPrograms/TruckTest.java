@@ -17,7 +17,7 @@ public class TruckTest {
 	}
 	@Test
 	public void GetCargoCapacityOrdinary() {
-		assertEquals(1000, truckOrdinary.cargoCaps(),0.002);
+		assertEquals(1000, truckOrdinary.getQuantity(),0.002);
 	}
 
 	@Test
@@ -26,7 +26,7 @@ public class TruckTest {
 	}	
 	@Test
 	public void GetCargoCapacityRefrigrated() {
-		assertEquals(800, truckRefrigrated.cargoCaps(),0.002);
+		assertEquals(800, truckRefrigrated.getQuantity(),0.002);
 	}
 	@Test
 	public void GetCostCalculationRefrigrated() {
