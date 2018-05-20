@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.TreeMap;
 
 import javax.swing.*;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -26,6 +27,7 @@ public class Main {
 	JFrame mainFrame;
 	JLabel capitalLbl;
 	JPanel controlPanel;
+	JPanel topPanel;
 	JButton inventoryBtn;
 	JButton salesLogBtn;
     JButton inpManifestBtn;
@@ -46,12 +48,15 @@ public class Main {
 				mainFrame.setSize(750,500);
 				
 				//Set layout
-				mainFrame.setLayout(new GridLayout(3, 1));
+				mainFrame.setLayout(new GridLayout(2, 1));
 				
 				//Create Panels
 				capitalLbl = new JLabel("Main Menu",JLabel.CENTER );
 				controlPanel = new JPanel();
 			    controlPanel.setLayout(new FlowLayout());
+			    topPanel = new JPanel();
+			    topPanel.setLayout(new GridLayout(2, 1));
+
 			    
 			    //Create Buttons
 				inventoryBtn = new JButton("Import Inventory");
@@ -89,8 +94,11 @@ public class Main {
 			    model.addColumn("Inventory");
 			    
 				//Add objects to frame
-				mainFrame.add(capitalLbl);
-				mainFrame.add(controlPanel);
+				//mainFrame.add(capitalLbl);
+				//mainFrame.add(controlPanel);
+			    mainFrame.add(topPanel);
+			    topPanel.add(capitalLbl);
+			    topPanel.add(controlPanel);
 				 
 			    controlPanel.add(inventoryBtn);
 			    controlPanel.add(salesLogBtn);
@@ -107,7 +115,9 @@ public class Main {
 	 * @return the address of the selected files location as a String
 	 */
 	private String fileChooserWindow() {
+		FileNameExtensionFilter filter = new FileNameExtensionFilter("CSV File", "csv");
 		JFileChooser fileChooser = new JFileChooser();
+		fileChooser.setFileFilter(filter);
 		int result = fileChooser.showOpenDialog(mainFrame);
 		//fileChooser.setCurrentDirectory(new File(System.getProperty("C:\\Users\\LoLsA\\Desktop\\CAB302 Assignment\\CAB302Ass2Group18")));
 		if (result == JFileChooser.APPROVE_OPTION) {
@@ -157,7 +167,7 @@ public class Main {
 						, "N/A"
 						, inventory.get(key).getCurrentInventory()
 						});
-			capitalLbl.setText(superMart.getStoreCapital());
+			capitalLbl.setText("Capital: "+superMart.getStoreCapital());
 			}
 		}
 	}
