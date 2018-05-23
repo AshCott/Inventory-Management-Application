@@ -190,24 +190,25 @@ public class Main {
 	         case "Inventory" :
 	        	 try {
 					superMart.creatInventory(file);
-				} catch (IOException e1) {
+		        	 updateTable();
+		        	 inventoryBtn.setEnabled(false);
+					 salesLogBtn.setEnabled(true);
+					 inpManifestBtn.setEnabled(true);
+					 expManifestBtn.setEnabled(true);
+		        	 invImported = true;
+				} catch (Exception e1) {
 					// TODO Auto-generated catch block
-					e1.printStackTrace();
+					JOptionPane.showMessageDialog(mainFrame, e1.getMessage());
 				}
-	        	 updateTable();
-	        	 inventoryBtn.setEnabled(false);
-				    salesLogBtn.setEnabled(true);
-				    inpManifestBtn.setEnabled(true);
-				    expManifestBtn.setEnabled(true);
-	        	 invImported = true;
+
 	        	 break;
 	        	 
 	         case "Sales_Log" :
 	        	 try {
 					superMart.importSalesLog("sales_log_0.csv");
-				} catch (IOException e1) {
+				} catch (Exception e1) {
 					// TODO Auto-generated catch block
-					e1.printStackTrace();
+					JOptionPane.showMessageDialog(mainFrame, e1.getMessage());
 				}
 	        	 updateTable();
 	        	 break;
@@ -215,9 +216,9 @@ public class Main {
 	         case "ImportManifest" :
 	        	 try {
 					superMart.importManifest("manifest4.csv");
-				} catch (IOException e1) {
+				} catch (Exception e1) {
 					// TODO Auto-generated catch block
-					e1.printStackTrace();
+					JOptionPane.showMessageDialog(mainFrame, e1.getMessage());
 				}
 	        	 updateTable();
 	        	 break;

@@ -48,23 +48,40 @@ public class Store {
 	 * Import and process the inventory csv files
 	 * @param link to the csv file
 	 * @throws IOException
+	 * @throws CSVFormatException 
 	 */
-	public void creatInventory(String file) throws IOException {
+	public void creatInventory(String file) throws IOException, CSVFormatException {
 		IOCSV importer = new IOCSV();
-		inventorylist = importer.readCSVFile(file);
+		try {
+			inventorylist = importer.readCSVFile(file, "inventory");
+		} catch (CSVFormatException e) {
+			// TODO Auto-generated catch block
+			// System.out.println(e);
+			throw e;
+		}
+		System.out.println("test");
 		inventory.creatInventory(inventorylist);
 		System.out.println("Import Inventory: Success");
+
 	}
 	
 	/**
 	 * Import and process the sales Log CSV files
 	 * @param link to the csv file
 	 * @throws IOException
+	 * @throws CSVFormatException 
 	 */
-	public void importSalesLog(String file) throws IOException {
+	public void importSalesLog(String file) throws IOException, CSVFormatException {
 		IOCSV importer = new IOCSV();
 		double totalSales = 0.0;
-		ArrayList<List> salesLog = importer.readCSVFile(file);
+		ArrayList<List> salesLog = null;
+		try {
+			salesLog = importer.readCSVFile(file, "sales_log");
+		} catch (CSVFormatException e) {
+			// TODO Auto-generated catch block
+			System.out.print(e.getMessage());
+			throw e;
+		}
 		
 		//Loop though the sales log
 		for(List i : salesLog) {
@@ -92,7 +109,13 @@ public class Store {
 	public void importManifest(String file) throws IOException {
 		IOCSV importer = new IOCSV();
 		String itemName;
-		ArrayList<List> manifestFile = importer.readCSVFile(file);
+		ArrayList<List> manifestFile = null;
+		try {
+			manifestFile = importer.readCSVFile(file, "manifest");
+		} catch (CSVFormatException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		Boolean isTruckType;
 		Boolean isRefrigerated = false;
 		Boolean isOrdinary = false;
