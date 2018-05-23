@@ -13,9 +13,11 @@ public class Item {
 	private double SellPrice;
 	private int ReorderPoint;
 	private int ReorderAmount;
-	private double Temperature;
+	//make the temperature to be nan so that if its a dry goods it doesn't' have a temperature
+	private double Temperature = Double.NaN;
 	private int CurrentInventory;
 	private boolean hasTemp;
+	private int quantity;
 	
 	/**
 	 * Create a new Refreigerated Item
@@ -93,9 +95,7 @@ public class Item {
 		}else {
 			return false;
 		}
-		
 	}
-	
 	public double getTemperature() {
 		return Temperature;
 	}	

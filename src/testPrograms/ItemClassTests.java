@@ -8,16 +8,19 @@ import org.junit.Before;
 import org.junit.Test;
 
 import program.IOCSV;
+import program.Manifest;
 import program.Store;
 
 public class ItemClassTests {
 	
 	IOCSV importer;
 	Store superMart;
+	Manifest manifest;
 	@Before
 	public void constructor() {
 		importer = new IOCSV();
 		superMart = Store.getInstance();
+		manifest = new Manifest();
 	}
 	
 	@Test
@@ -28,22 +31,26 @@ public class ItemClassTests {
 	
 	@Test
 	public void importItemProperties() throws IOException {
-		superMart.creatInventory("item_properties.csv");
+//		superMart.creatInventory("item_properties.csv");
 	}
 	
 	@Test
 	public void importManifest() throws IOException {
-		superMart.creatInventory("item_properties.csv");
-		superMart.importManifest("manifest.csv");
+//		superMart.creatInventory("item_properties.csv");
+//		superMart.importManifest("manifest.csv");
 	}
 //	
 	@Test
 	public void importSalesLog() throws IOException {
-		superMart.creatInventory("item_properties.csv");
-		superMart.importSalesLog("sales_log_0.csv");
-		assertEquals("$129,330.00", superMart.getStoreCapital());
-		System.out.println("a");
+//		superMart.creatInventory("item_properties.csv");
+//		superMart.importSalesLog("sales_log_0.csv");
+//		assertEquals("$129,330.00", superMart.getStoreCapital());
+//		System.out.println("a");
 		
 	}
-
+	@Test
+	public void exportManifest() throws IOException{
+		manifest.generateManifest();
+		
+	}
 }

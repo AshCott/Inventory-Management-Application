@@ -19,7 +19,6 @@ public class Stock {
 	
 	public void creatInventory(ArrayList<List> inventorylist) {
 		for(List item : inventorylist) {
-			
 			//Extract Item infomation from array
 			String name =  (String) item.get(0);
 			double ManufactureCost = Double.parseDouble((String) item.get(1));

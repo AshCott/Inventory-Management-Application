@@ -127,21 +127,11 @@ public class Store {
 					totalPriceInOrdinary = 0.0;
 					totalProductBoughtOrdinary=0.0;
 				}
-
-//				if (refTruck != null) {
-//					System.out.println("double test");
-//					manifest.saveRefTruck(refTruck);
-////					System.out.println("SAVE THE TRUCK TO THE MANIFEST DEFINED ABOVE OR SOMETHING");
-//				}
-//				if(ornTruck!=null) {
-//					manifest.saveOrnTruck(ornTruck);
-//				}
-
 			}
 			else {
 				Integer numbBought = Integer.parseInt((String)line.get(1));
 				if(isOrdinary) {
-					ornTruck.addItem(content, numbBought);
+					ornTruck.addItemImportManifest(content, numbBought);
 					itemName = (String) content;
 					Item temp = inventory.getItem(itemName);
 					totalProductBoughtOrdinary +=numbBought;
@@ -158,7 +148,7 @@ public class Store {
 						}
 					}else {
 					
-					refTruck.addItem(content, numbBought);
+					refTruck.addItemImportManifest(content, numbBought);
 					itemName = (String) content;
 					Item temp = inventory.getItem(itemName);
 					if(coldest>temp.getTemperature()) {
@@ -194,7 +184,6 @@ public class Store {
 		}
 		System.out.println("Import Manifest: Success");
 	}
-	
 	/**
 	 * return all the items in the inventory
 	 * @return HashMap of all items in inventory
@@ -202,5 +191,9 @@ public class Store {
 	public HashMap<String, Item> getInventory() {
 		HashMap<String, Item> temp = inventory.getInventory();
 		return temp;
+	}
+	public void calculateExportManifest() throws IOException {
+		Manifest manifest = new Manifest();
+		double manifestCost = manifest.generateManifest();
 	}
 }
