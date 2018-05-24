@@ -13,7 +13,7 @@ public class Item {
 	private double SellPrice;
 	private int ReorderPoint;
 	private int ReorderAmount;
-	//make the temperature to be nan so that if its a dry goods it doesn't' have a temperature
+	//make the temperature to be nan so that if its a dry goods it doesn't have a temperature
 	private double Temperature = Double.NaN;
 	private int CurrentInventory;
 	private boolean hasTemp;
@@ -107,4 +107,6 @@ public class Item {
 	public void setCurrentInventory(int number) {
 		CurrentInventory = number;
 	}
+
+	
 }

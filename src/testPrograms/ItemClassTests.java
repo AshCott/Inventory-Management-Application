@@ -31,7 +31,7 @@ public class ItemClassTests {
 	
 	@Test
 	public void importItemProperties() throws IOException {
-//		superMart.creatInventory("item_properties.csv");
+		superMart.creatInventory("item_properties.csv");
 	}
 	
 	@Test
@@ -50,6 +50,7 @@ public class ItemClassTests {
 	}
 	@Test
 	public void exportManifest() throws IOException{
+		superMart.creatInventory("item_properties.csv");
 		manifest.generateManifest();
 		
 	}
