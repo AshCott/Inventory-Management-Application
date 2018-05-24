@@ -211,7 +211,7 @@ public class Main {
 
 			case "ImportManifest":
 				try {
-					superMart.importManifest("manifest2.csv");
+					superMart.importManifest("manifest.csv");
 				} catch (Exception e1) {
 					// TODO Auto-generated catch block
 					JOptionPane.showMessageDialog(mainFrame, e1.getMessage());

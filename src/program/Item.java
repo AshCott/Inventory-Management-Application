@@ -21,7 +21,7 @@ public class Item {
 	private int quantity;
 
 	/**
-	 * Create a new Refrigerated Item
+	 * Create a new Refreigerated Item
 	 * 
 	 * @param name
 	 * @param ManufactureCost
@@ -30,7 +30,7 @@ public class Item {
 	 * @param reorderPoint
 	 * @param temperature
 	 */
-	public Item(String name, double ManufactureCost, double sellPrice, int reorderAmount, int reorderPoint,
+	public Item(String name, double ManufactureCost, double sellPrice, int reorderPoint ,int reorderAmount,
 			double temperature) {
 		this.Name = name;
 		this.ManufactureCost = ManufactureCost;
@@ -51,7 +51,7 @@ public class Item {
 	 * @param reorderAmount
 	 * @param reorderPoint
 	 */
-	public Item(String name, double ManufactureCost, double sellPrice, int reorderAmount, int reorderPoint) {
+	public Item(String name, double ManufactureCost, double sellPrice, int reorderPoint ,int reorderAmount ) {
 		this.Name = name;
 		this.ManufactureCost = ManufactureCost;
 		this.SellPrice = sellPrice;
