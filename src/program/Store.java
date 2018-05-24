@@ -70,8 +70,9 @@ public class Store {
 	 * @param link to the csv file
 	 * @throws IOException
 	 * @throws CSVFormatException 
+	 * @throws StockException 
 	 */
-	public void importSalesLog(String file) throws IOException, CSVFormatException {
+	public void importSalesLog(String file) throws IOException, CSVFormatException, StockException {
 		IOCSV importer = new IOCSV();
 		double totalSales = 0.0;
 		ArrayList<List> salesLog = null;
@@ -82,6 +83,23 @@ public class Store {
 		} catch (CSVFormatException e) {
 			// TODO Auto-generated catch block
 			throw e;
+		}
+		
+		//Check that item exists in inventory
+		for(List item : salesLog) {
+			if (inventory.itemExists((String )item.get(0)) == false) {
+				throw new StockException("Item doesnt exist in inventory \n" + item);
+			}
+			
+			//Checks if inventory stock has the amount that can be sold
+			String itemName = (String) item.get(0);
+			Item temp = inventory.getItem(itemName);
+			int numbSold = Integer.parseInt((String) item.get(1));
+			int currentInventory = temp.getCurrentInventory();
+			currentInventory -= numbSold;
+			if (currentInventory < 0) {
+				throw new StockException("Cannot sell more items than are in the inventory \n" + item);
+			}
 		}
 		
 		//Loop though the sales log

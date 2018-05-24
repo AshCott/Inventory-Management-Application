@@ -54,4 +54,8 @@ public class Stock {
 		int a = inventory.get(name).getCurrentInventory();
 		inventory.get(name).setCurrentInventory(5557);
 	}
+	
+	public boolean itemExists(String name) {
+		return inventory.containsKey(name);
+	}
 }
