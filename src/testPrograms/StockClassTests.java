@@ -9,18 +9,20 @@ import org.junit.Before;
 import org.junit.Test;
 
 import program.Stock;
+
 @SuppressWarnings("rawtypes")
 
 /**
  * Tests for stock class
+ * 
  * @author Ashley Cottrell
  *
  */
 public class StockClassTests {
-	
+
 	ArrayList<List> inventory;
 	Stock stock;
-	
+
 	/**
 	 * Setup an array for importing into stock
 	 */
@@ -37,7 +39,7 @@ public class StockClassTests {
 		temp.add("5");
 		inventory.add(temp);
 	}
-	
+
 	/**
 	 * Create the inventory using an array
 	 */
@@ -53,7 +55,7 @@ public class StockClassTests {
 	public void itemExist() {
 		assertEquals(true, stock.itemExists("apple"));
 	}
-	
+
 	/**
 	 * Test for checking if an item exists in the inventory
 	 */
@@ -61,5 +63,5 @@ public class StockClassTests {
 	public void getItem() {
 		assertEquals("apple", stock.getItem("apple").getName());
 	}
-	
+
 }

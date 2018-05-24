@@ -9,10 +9,10 @@ import org.junit.Test;
 
 import program.CSVFormatException;
 import program.IOCSV;
-
+@SuppressWarnings("rawtypes")
 public class IOCSVTest {
 	IOCSV importer;
-	
+
 	@Before
 	public void constructor() {
 		importer = new IOCSV();
@@ -22,22 +22,23 @@ public class IOCSVTest {
 	public void importItem_Properties() throws IOException {
 
 	}
-	
+
 	@Test
 	public void importItemProperties() throws IOException, CSVFormatException {
 		ArrayList<List> b = importer.readCSVFile("item_properties.csv", "inventory");
 		System.out.println(b);
 	}
-	
+
 	@Test
 	public void importManifest() throws IOException, CSVFormatException {
-		ArrayList<List> b = importer.readCSVFile("manifest.csv", "inventory");
+		ArrayList<List> b = importer.readCSVFile("manifest.csv", "manifest");
 		System.out.println(b);
 	}
 
+	
 	@Test
 	public void importSalesLog() throws IOException, CSVFormatException {
-		ArrayList<List> b = importer.readCSVFile("sales_log_0.csv", "inventory");
+		ArrayList<List> b = importer.readCSVFile("sales_log_0.csv", "sales_log");
 		System.out.println(b);
 	}
 }
