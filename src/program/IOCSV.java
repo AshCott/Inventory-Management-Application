@@ -65,13 +65,19 @@ public class IOCSV {
 			
 		case "manifest":
 			try {
-				inventoryTests(list, type);
+				manifestTests(list, type);
 			} catch (CSVFormatException e) {
 				throw e;
 			}
 			break;
 		}
 		return list;
+	}
+	
+	private void manifestTests(ArrayList<List> list, String type) throws CSVFormatException{
+		for (List item : list) {
+			
+		}
 	}
 	
 	private void sales_logTests(ArrayList<List> list, String type) throws CSVFormatException{
