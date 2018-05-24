@@ -13,7 +13,7 @@ public class OrdinaryTruck extends Truck {
 	
 	@Override
 	public boolean isCargoFull() {
-		return(this.CARGO_CAPACITY==this.quantity);
+		return(this.CARGO_CAPACITY==getQuantity());
 	}
 	@Override
 	public double costCalculation(double quantity) {
@@ -45,35 +45,39 @@ public class OrdinaryTruck extends Truck {
  	}
 
 	@Override
-	public double addItemOptimizeManifest(Item cargoItem) {
-//		double leftOverCapacity = this.CARGO_CAPACITY-(cargoItem.getCurrentInventory()+this.insideTruck);
-//		System.out.println(this.insideTruck);
-//		System.out.println(leftOverCapacity);
-//		//if truck is not full add the thing and return the value of leftover
-//		//
-//		if(leftOverCapacity>0) {
-////			this.insideTruck+=cargoItem.reo
-//			return leftOverCapacity;
-//		}else {
-//			return 0;
-//		}
-//		//else (truck is full) then don't add the thing and return value of leftover as 0 since it is possible to become negative
-//		//if truck is full
-//		else if(leftOverCapacity<=0) {
-//			
-//			return 0;
-//		}else {
-//			
-//		}
-//		//if truck is full
-//		else if(leftOverCapacity==cargoItem.getCurrentInventory()) {
-//			return leftOverCapacity;
-//		}else {
-//			cargoItem.setCurrentInventory((int) (cargoItem.getCurrentInventory()-leftOverCapacity));
-//			cargo.put(cargoItem.getName(), cargoItem.getCurrentInventory());
-//			return leftOverCapacity;
-//		}
-		return 0;
+	public int addItemOptimizeManifest(Item cargoItem) {
+		System.out.println("THIS IS QUANTITY"+this.quantity);
+		int leftOverCapacity = (int) ((cargoItem.getReorderAmount()+this.quantity)-this.CARGO_CAPACITY);
+		if(leftOverCapacity<=0) {
+			this.quantity+=cargoItem.getReorderAmount();
+			this.cargo.put(cargoItem.getName(), cargoItem.getReorderAmount());
+			System.out.println("THIS IS QUANTITY"+this.quantity);
+			System.out.println("this is left over capacity"+leftOverCapacity);
+			
+			return leftOverCapacity*-1;
+		}else if(leftOverCapacity == cargoItem.getReorderAmount()) {
+			System.out.println("THIS IS QUANTITY"+this.quantity);
+			System.out.println("this is left over capacity"+leftOverCapacity);
+			return leftOverCapacity;
+		}else {
+			cargoItem.setCurrentInventory(cargoItem.getReorderAmount()-leftOverCapacity);
+			this.quantity+=cargoItem.getCurrentInventory();
+			this.cargo.put(cargoItem.getName(), cargoItem.getCurrentInventory());
+			System.out.println("THIS IS QUANTITY"+this.quantity);
+			System.out.println("this is left over capacity"+leftOverCapacity);
+			return leftOverCapacity;
+		}
+
+	}
+
+	@Override
+	public int getTruckNo() {
+		return truckNum;
+	}
+
+	@Override
+	public void setTruckNo(int truckNumber) {
+		this.truckNum=truckNumber;
 	}
 
 

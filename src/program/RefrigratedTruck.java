@@ -18,8 +18,8 @@ public class RefrigratedTruck extends Truck {
 	@Override
 	public boolean isCargoFull() {
 		return (this.CARGO_CAPACITY == getQuantity());
+		
 	}
-	
 	@Override
 	public double costCalculation(double temperature) {
 		this.temperature = temperature;
@@ -64,19 +64,34 @@ public class RefrigratedTruck extends Truck {
 	}
 	
 	@Override
-	public double addItemOptimizeManifest(Item cargoItem) {
-		double leftOverCapacity = this.CARGO_CAPACITY-(cargoItem.getCurrentInventory()+this.insideTruck);
-		System.out.print(leftOverCapacity);
-		if(leftOverCapacity>0) {
-			this.insideTruck += cargoItem.getCurrentInventory();
-			cargo.put(cargoItem.getName(), cargoItem.getCurrentInventory());
-			return 0;
-		}else if(leftOverCapacity==cargoItem.getCurrentInventory()) {
-			//truck are full
+	public int getTruckNo() {
+		return truckNum;
+	}
+
+	@Override
+	public void setTruckNo(int truckNumber) {
+		this.truckNum=truckNumber;
+	}
+	@Override
+	public int addItemOptimizeManifest(Item cargoItem) {
+		int leftOverCapacity = (int) ((cargoItem.getReorderAmount()+this.quantity)-this.CARGO_CAPACITY);
+		if(leftOverCapacity<=0) {
+			//if left over capacity is negative
+			//300, 200, 800
+			this.quantity+=cargoItem.getReorderAmount();
+			this.cargo.put(cargoItem.getName(), cargoItem.getReorderAmount());
+			System.out.println("this is left over capacity"+leftOverCapacity);
+			return leftOverCapacity*-1;
+			
+		}else if(leftOverCapacity == cargoItem.getReorderAmount()) {
+			System.out.println("this is left over capacity"+leftOverCapacity);
 			return leftOverCapacity;
 		}else {
-			cargoItem.setCurrentInventory((int) (cargoItem.getCurrentInventory()-leftOverCapacity));
-			cargo.put(cargoItem.getName(), cargoItem.getCurrentInventory());
+			
+			cargoItem.setCurrentInventory(cargoItem.getReorderAmount()-leftOverCapacity);
+			this.quantity+=cargoItem.getCurrentInventory();
+			this.cargo.put(cargoItem.getName(), cargoItem.getCurrentInventory());
+			System.out.println("this is left over capacity"+leftOverCapacity);
 			return leftOverCapacity;
 		}
 
