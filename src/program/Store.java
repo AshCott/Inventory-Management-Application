@@ -75,11 +75,12 @@ public class Store {
 		IOCSV importer = new IOCSV();
 		double totalSales = 0.0;
 		ArrayList<List> salesLog = null;
+		
+		//Import Sales Log
 		try {
 			salesLog = importer.readCSVFile(file, "sales_log");
 		} catch (CSVFormatException e) {
 			// TODO Auto-generated catch block
-			System.out.print(e.getMessage());
 			throw e;
 		}
 		
@@ -106,7 +107,7 @@ public class Store {
 	}
 	
 	
-	public void importManifest(String file) throws IOException {
+	public void importManifest(String file) throws IOException, CSVFormatException {
 		IOCSV importer = new IOCSV();
 		String itemName;
 		ArrayList<List> manifestFile = null;
@@ -114,7 +115,7 @@ public class Store {
 			manifestFile = importer.readCSVFile(file, "manifest");
 		} catch (CSVFormatException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			throw e;
 		}
 		Boolean isTruckType;
 		Boolean isRefrigerated = false;
