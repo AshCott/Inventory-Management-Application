@@ -6,6 +6,8 @@ import java.io.IOException;
 
 import org.junit.Before;
 import org.junit.Test;
+
+import program.CSVFormatException;
 import program.IOCSV;
 import program.Manifest;
 import program.Store;
@@ -44,9 +46,10 @@ public class ItemClassTests {
 
 	/**
 	 * Test getting item Manufacture Cost
+	 * @throws CSVFormatException 
 	 */
 	@Test
-	public void importItemProperties() throws IOException {
+	public void importItemProperties() throws IOException, CSVFormatException {
 		superMart.creatInventory("item_properties.csv");
 		}
 
@@ -88,11 +91,13 @@ public class ItemClassTests {
 
 	/**
 	 * Test checking if item has a tempreture
+	 * @throws CSVFormatException 
 	 */
 	@Test
-	public void exportManifest() throws IOException{
+	public void exportManifest() throws IOException, CSVFormatException{
 		superMart.creatInventory("item_properties.csv");
 		manifest.generateManifest();
+//		System.out.println(superMart.getInventory().size());
 	}	
 	public void hasTempreture() {
 		assertEquals("hasTempreture is Incorrect", true, item.hasTempreture());
