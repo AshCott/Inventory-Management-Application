@@ -49,12 +49,12 @@ public class Stock {
 		return inventory;
 	}
 	
-	//potentially delete me
-	public void increaseItemAmount(String name) {
-		int a = inventory.get(name).getCurrentInventory();
-		inventory.get(name).setCurrentInventory(5557);
+	public void addItem(String itemName,int quantity) {
+		itemList.put(itemName, quantity);
 	}
-	
+	public HashMap<String, Integer> getTruckItem() {
+		return itemList;
+	}
 	public boolean itemExists(String name) {
 		return inventory.containsKey(name);
 	}
