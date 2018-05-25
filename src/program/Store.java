@@ -234,6 +234,7 @@ public class Store {
 		HashMap<String, Item> temp = inventory.getInventory();
 		return temp;
 	}
+	
 	public void calculateExportManifest() throws IOException {
 		Manifest manifest = new Manifest();
 		double manifestCost = manifest.generateManifest();
