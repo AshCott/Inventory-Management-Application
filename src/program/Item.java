@@ -20,6 +20,7 @@ public class Item {
 	private int CurrentInventory;
 	private boolean hasTemp;
 	private int quantity;
+	private int tempReorder;
 
 	/**
 	 * Create a new Refreigerated Item
@@ -148,6 +149,13 @@ public class Item {
 	public void setCurrentInventory(int number) {
 		CurrentInventory = number;
 	}
-
+	
+	public int getTempReorder() {
+		return tempReorder;
+	}
+	
+	public void setTempReorderAmount(int tempNumber) {
+		this.tempReorder= tempNumber;
+	}
 	
 }
