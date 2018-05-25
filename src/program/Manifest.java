@@ -1,5 +1,7 @@
 package program;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -229,9 +231,30 @@ public class Manifest {
 			System.out.println(something.getQuantity());
 		}
 		System.out.println(this.ornTruck.size());
+		this.makeCSV("exportManifest");
 		return itemCost + deliveryTruckCost;
 	}
-
+	
+	public void makeCSV(String nameOfFile) throws IOException{
+		BufferedWriter write = new BufferedWriter(new FileWriter(System.getProperty("user.dir")+"/"+nameOfFile+".csv"));
+		for(int index = 0;index<this.ornTruck.size();index++) {
+			write.write(">Ordinary\n");
+			for(String key: this.ornTruck.get(index).getCargo().keySet()) {
+				String row = key+ "," + this.ornTruck.get(index).getCargo().get(key)+"\n";
+				write.write(row);
+			}
+		}
+		for(int index =0; index<this.refTruck.size();index++) {
+			write.write(">Refrigerated\n");
+			for(String key:this.refTruck.get(index).getCargo().keySet()) {
+				String row = key+ "," + this.refTruck.get(index).getCargo().get(key)+"\n";
+				write.write(row);
+			}
+		}
+		
+		write.close();
+		
+	}
 	// public double generateManifest() throws IOException {
 	// double itemCost = 0;
 	// double trucksCost = 0;
