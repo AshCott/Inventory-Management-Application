@@ -5,16 +5,26 @@ import java.util.HashMap;
 
 public class RefrigratedTruck extends Truck {
 	private double temperature;
-	private final double CARGO_CAPACITY = 800;
+	public final double CARGO_CAPACITY = 800;
 	private final double MAX_TEMPERATURE = 10;
 	private final double MIN_TEMPERATURE = -20;
+	private int extraItem;
 	private double quantity;
-
+	
+	
+	
+	
+	private HashMap <String,Integer> cargo;
+	private Stock cargoItems = new Stock();
+	
 	public RefrigratedTruck() {
 		this.cargo = new HashMap<String, Integer>();
 		this.itemCount = 0;
 	}
 
+	public HashMap<String, Integer> getCargo() {
+		return this.cargo;
+	}
 	@Override
 	public boolean isCargoFull() {
 		return (this.CARGO_CAPACITY == getQuantity());
@@ -51,7 +61,11 @@ public class RefrigratedTruck extends Truck {
 		cargo.put(itemName, quantity);
 		itemCount += quantity;
 	}
-	
+	public void addItem(String itemName, Integer quantity) {
+		cargoItems.addItem(itemName, quantity);
+		itemCount += quantity;
+		this.quantity+=quantity;
+	}
 	@Override
 	public void setTotalPriceInTruck(double totalPrice) {
 		this.totalPrice = totalPrice;
@@ -72,29 +86,52 @@ public class RefrigratedTruck extends Truck {
 	public void setTruckNo(int truckNumber) {
 		this.truckNum=truckNumber;
 	}
+	
 	@Override
 	public int addItemOptimizeManifest(Item cargoItem) {
-		int leftOverCapacity = (int) ((cargoItem.getReorderAmount()+this.quantity)-this.CARGO_CAPACITY);
+//		System.out.println("THIS IS QUANTITY"+this.quantity);
+		int leftOverCapacity;
+		int itemGetToCargo;
+		leftOverCapacity = (int) ((cargoItem.getReorderAmount()+this.quantity)-this.CARGO_CAPACITY);
+		
 		if(leftOverCapacity<=0) {
-			//if left over capacity is negative
-			//300, 200, 800
+			//logic in here is correct
 			this.quantity+=cargoItem.getReorderAmount();
 			this.cargo.put(cargoItem.getName(), cargoItem.getReorderAmount());
-			System.out.println("this is left over capacity"+leftOverCapacity);
-			return leftOverCapacity*-1;
-			
-		}else if(leftOverCapacity == cargoItem.getReorderAmount()) {
-			System.out.println("this is left over capacity"+leftOverCapacity);
-			return leftOverCapacity;
+			return cargoItem.getReorderAmount();
 		}else {
-			
-			cargoItem.setCurrentInventory(cargoItem.getReorderAmount()-leftOverCapacity);
-			this.quantity+=cargoItem.getCurrentInventory();
-			this.cargo.put(cargoItem.getName(), cargoItem.getCurrentInventory());
-			System.out.println("this is left over capacity"+leftOverCapacity);
-			return leftOverCapacity;
+			//if there is a left over set it to extra item
+			this.setExtraItemInCargo(leftOverCapacity);
+			itemGetToCargo = (int) (this.CARGO_CAPACITY-this.quantity);
+			this.cargo.put(cargoItem.getName(), itemGetToCargo);
+			this.quantity+=itemGetToCargo;
+			return itemGetToCargo;
 		}
-
+	}
+	public int addItemExtraItem(Item cargoItem,int extraCargo) {
+//		System.out.println("THIS IS QUANTITY"+this.quantity);
+		int leftOverCapacity;
+		int itemGetToCargo;
+		leftOverCapacity = (int) ((extraCargo+this.quantity)-this.CARGO_CAPACITY);
+		if(leftOverCapacity<=0) {
+			//logic in here is correct
+			this.quantity+=extraCargo;
+			this.cargo.put(cargoItem.getName(), extraCargo);
+			return extraCargo;
+		}else {
+			//if there is a left over set it to extra item
+			this.setExtraItemInCargo(leftOverCapacity);
+			itemGetToCargo = (int) (this.CARGO_CAPACITY-this.quantity);
+			this.cargo.put(cargoItem.getName(), itemGetToCargo);
+			this.quantity+=itemGetToCargo;
+			return itemGetToCargo;
+		}
+	}
+	public int getExtraItemInCargo() {
+		return extraItem;
+	}
+	public void setExtraItemInCargo(int extraItem) {
+		this.extraItem= extraItem;
 	}
 
 }
