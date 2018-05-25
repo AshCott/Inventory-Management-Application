@@ -151,7 +151,7 @@ public class IOCSV {
 
 			// Checks if value is not less than zero
 			if (numbSold < 0) {
-				throw new CSVFormatException("Number can't be less than or equal to zero \n" + item);
+				throw new CSVFormatException("Number can't be less than to zero \n" + item);
 			}
 
 		}
