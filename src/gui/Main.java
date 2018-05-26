@@ -134,23 +134,6 @@ public class Main {
 			return "error";
 		}
 	}
-	
-	private String fileSaveWindow() {
-		FileNameExtensionFilter filter = new FileNameExtensionFilter("CSV File", "csv");
-		JFileChooser fileChooser = new JFileChooser();
-		fileChooser.setFileFilter(filter);
-		int result = fileChooser.showSaveDialog(mainFrame);
-		// fileChooser.setCurrentDirectory(new
-		// File(System.getProperty("C:\\Users\\LoLsA\\Desktop\\CAB302
-		// Assignment\\CAB302Ass2Group18")));
-		if (result == JFileChooser.APPROVE_OPTION) {
-			File selectedFile = fileChooser.getSelectedFile();
-			return selectedFile.getAbsolutePath();
-
-		} else {
-			return "error";
-		}
-	}
 
 	/**
 	 * Displays and updates the data in the table on the main form.
@@ -241,8 +224,6 @@ public class Main {
 
 			case "ExportManifest":
 				try {
-					String file = fileSaveWindow();
-					System.out.println(file);
 					inpManifestBtn.setEnabled(true);
 					superMart.calculateExportManifest();
 				} catch (IOException e1) {
