@@ -104,8 +104,6 @@ public class Main {
 		controlPanel.add(expManifestBtn);
 		controlPanel.add(inpManifestBtn);
 		controlPanel.add(salesLogBtn);
-		
-		
 
 		mainFrame.add(sp);
 
@@ -179,7 +177,6 @@ public class Main {
 			// Get Variables
 			String command = e.getActionCommand();
 
-
 			// What button was pressed
 			switch (command) {
 
@@ -200,8 +197,9 @@ public class Main {
 
 			case "Sales_Log":
 				try {
-					// String file = fileChooserWindow();
-					superMart.importSalesLog("sales_log_0.csv");
+					String file = fileChooserWindow();
+					superMart.importSalesLog(file);
+//					superMart.importSalesLog("sales_log_0.csv");
 				} catch (Exception e1) {
 					JOptionPane.showMessageDialog(mainFrame, e1.getMessage());
 				}
@@ -210,7 +208,10 @@ public class Main {
 
 			case "ImportManifest":
 				try {
-					superMart.importManifest("manifest.csv");
+					String file = fileChooserWindow();
+					// String file = "item_properties.csv";
+					// superMart.importManifest("exportManifest.csv");
+					superMart.importManifest(file);
 					salesLogBtn.setEnabled(true);
 				} catch (Exception e1) {
 					JOptionPane.showMessageDialog(mainFrame, e1.getMessage());

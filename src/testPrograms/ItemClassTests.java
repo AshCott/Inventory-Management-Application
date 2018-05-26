@@ -2,9 +2,12 @@ package testPrograms;
 
 import static org.junit.Assert.assertEquals;
 
+import java.io.IOException;
+
 import org.junit.Before;
 import org.junit.Test;
 
+import program.CSVFormatException;
 import program.IOCSV;
 import program.Manifest;
 import program.Store;
@@ -88,4 +91,11 @@ public class ItemClassTests {
 	public void hasTempreture() {
 		assertEquals("hasTempreture is Incorrect", true, item.hasTempreture());
 	}
+	
+ 	@Test
+	public void exportManifest() throws IOException, CSVFormatException{
+		superMart.creatInventory("item_properties.csv");
+		manifest.generateManifest();
+//		System.out.println(superMart.getInventory().size());
+	}	
 }

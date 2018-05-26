@@ -7,6 +7,7 @@ import java.io.IOException;
 import org.junit.*;
 
 import program.CSVFormatException;
+import program.DeliveryException;
 import program.StockException;
 import program.Store;
 
@@ -78,9 +79,10 @@ public class StoreClassTests {
 	 * 
 	 * @throws IOException
 	 * @throws CSVFormatException
+	 * @throws DeliveryException 
 	 */
 	@Test
-	public void ImportManifest() throws IOException, CSVFormatException {
+	public void ImportManifest() throws IOException, CSVFormatException, DeliveryException {
 		Store superMart;
 		superMart = Store.getInstance();
 		superMart.creatInventory("item_properties.csv");
@@ -94,9 +96,10 @@ public class StoreClassTests {
 	 * @throws IOException
 	 * @throws CSVFormatException
 	 * @throws StockException
+	 * @throws DeliveryException 
 	 */
 	@Test
-	public void importSalesLog_0() throws IOException, CSVFormatException, StockException {
+	public void importSalesLog_0() throws IOException, CSVFormatException, StockException, DeliveryException {
 		Store superMart;
 		superMart = Store.getInstance();
 		superMart.creatInventory("item_properties.csv");
@@ -112,9 +115,10 @@ public class StoreClassTests {
 	 * @throws IOException
 	 * @throws CSVFormatException
 	 * @throws StockException
+	 * @throws DeliveryException 
 	 */
 	@Test
-	public void importSalesLog_1() throws IOException, CSVFormatException, StockException {
+	public void importSalesLog_1() throws IOException, CSVFormatException, StockException, DeliveryException {
 		Store superMart;
 		superMart = Store.getInstance();
 		superMart.creatInventory("item_properties.csv");
@@ -130,9 +134,10 @@ public class StoreClassTests {
 	 * @throws IOException
 	 * @throws CSVFormatException
 	 * @throws StockException
+	 * @throws DeliveryException 
 	 */
 	@Test
-	public void importSalesLog_2() throws IOException, CSVFormatException, StockException {
+	public void importSalesLog_2() throws IOException, CSVFormatException, StockException, DeliveryException {
 		Store superMart;
 		superMart = Store.getInstance();
 		superMart.creatInventory("item_properties.csv");
@@ -147,9 +152,10 @@ public class StoreClassTests {
 	 * @throws IOException
 	 * @throws CSVFormatException
 	 * @throws StockException
+	 * @throws DeliveryException 
 	 */
 	@Test
-	public void importSalesLog_3() throws IOException, CSVFormatException, StockException {
+	public void importSalesLog_3() throws IOException, CSVFormatException, StockException, DeliveryException {
 		Store superMart;
 		superMart = Store.getInstance();
 		superMart.creatInventory("item_properties.csv");
@@ -164,9 +170,10 @@ public class StoreClassTests {
 	 * @throws IOException
 	 * @throws CSVFormatException
 	 * @throws StockException
+	 * @throws DeliveryException 
 	 */
 	@Test
-	public void importSalesLog_4() throws IOException, CSVFormatException, StockException {
+	public void importSalesLog_4() throws IOException, CSVFormatException, StockException, DeliveryException {
 		Store superMart;
 		superMart = Store.getInstance();
 		superMart.creatInventory("item_properties.csv");

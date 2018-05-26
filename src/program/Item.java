@@ -1,6 +1,8 @@
 package program;
 
 /**
+ * This is the item class where it represent the item properties in the
+ * supermart store
  * 
  * @author Ashley Cottrell
  * @author
@@ -22,7 +24,7 @@ public class Item {
 	private int tempReorder;
 
 	/**
-	 * Create a new Refreigerated Item
+	 * Create a new Refrigerated Item
 	 * 
 	 * @param name
 	 * @param ManufactureCost
@@ -99,7 +101,7 @@ public class Item {
 	}
 
 	/**
-	 * gets teh re-order point
+	 * gets the re-order point
 	 * 
 	 * @return the re-order point as a integer
 	 */
@@ -108,10 +110,10 @@ public class Item {
 	}
 
 	/**
-	 * Check if an item has a tempreture
+	 * Check if an item has a temperature
 	 * 
-	 * @return boolean | true - Item has tempreture | False - Item doesnt have a
-	 *         tempreture
+	 * @return boolean | true - Item has temperature | False - Item doesn't have a
+	 *         temperature
 	 */
 	public boolean hasTempreture() {
 		if (hasTemp) {
@@ -122,9 +124,9 @@ public class Item {
 	}
 
 	/**
-	 * get the tempreture of an item
+	 * get the temperature of an item
 	 * 
-	 * @return the tempreture as a double
+	 * @return the temperature as a double
 	 */
 	public double getTemperature() {
 		return Temperature;
@@ -150,7 +152,7 @@ public class Item {
 	}
 
 	/**
-	 * Return the temp reorder amount
+	 * Return the temp-reorder amount
 	 * 
 	 * @return int
 	 */
@@ -159,7 +161,7 @@ public class Item {
 	}
 
 	/**
-	 * Set the temp reorder amount
+	 * Set the temp-reorder amount
 	 * 
 	 * @param tempNumber
 	 */

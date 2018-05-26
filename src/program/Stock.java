@@ -11,6 +11,7 @@ import java.util.List;
  *
  */
 public class Stock {
+	
 	public static HashMap<String, Item> inventory = new HashMap<String, Item>();
 	public HashMap<String, Integer> itemList = new HashMap<String, Integer>();
 
@@ -32,14 +33,14 @@ public class Stock {
 			int ReorderPoint = Integer.parseInt((String) item.get(3));
 			int ReorderAmount = Integer.parseInt((String) item.get(4));
 
-			// Check if tempreture is required and creat an item.
+			// Check if temperature is required and create an item.
 			if (item.size() == 6) {
 				int Tempreture = Integer.parseInt((String) item.get(5));
-				// Create item with temprature
+				// Create item with temperature
 				Item product = new Item(name, ManufactureCost, SellPrice, ReorderPoint, ReorderAmount, Tempreture);
 				inventory.put(name, product);
 			} else {
-				// Create item without temprature
+				// Create item without temperature
 				Item product = new Item(name, ManufactureCost, SellPrice, ReorderPoint, ReorderAmount);
 				inventory.put(name, product);
 			}
