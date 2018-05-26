@@ -17,14 +17,13 @@ import program.Store;
  *
  */
 public class StoreClassTests {
-	Store superMart;
 
 	/**
 	 * constructor for store
 	 */
 	@Before
 	public void constructor() {
-		superMart = Store.getInstance();
+
 	}
 
 	/**
@@ -32,6 +31,8 @@ public class StoreClassTests {
 	 */
 	@Test
 	public void GetStoreCapital() {
+		Store superMart;
+		superMart = Store.getInstance();
 		assertEquals("$100,000.00", superMart.getStoreCapital());
 	}
 
@@ -40,6 +41,8 @@ public class StoreClassTests {
 	 */
 	@Test
 	public void GetStoreName() {
+		Store superMart;
+		superMart = Store.getInstance();
 		assertEquals("SuperMart", superMart.getStoreName());
 	}
 
@@ -51,33 +54,125 @@ public class StoreClassTests {
 	 */
 	@Test
 	public void createInventory() throws IOException, CSVFormatException {
+		Store superMart;
+		superMart = Store.getInstance();
 		superMart.creatInventory("item_properties.csv");
 	}
 
 	/**
-	 * Test for importing a sales log from CSV file
+	 * Test for exporting Manifest
+	 * 
+	 * @throws IOException
+	 * @throws CSVFormatException
+	 */
+	@Test
+	public void ExportManifest() throws IOException, CSVFormatException {
+		Store superMart;
+		superMart = Store.getInstance();
+		superMart.creatInventory("item_properties.csv");
+		superMart.calculateExportManifest();
+	}
+
+	/**
+	 * Import the Manifest File
+	 * 
+	 * @throws IOException
+	 * @throws CSVFormatException
+	 */
+	@Test
+	public void ImportManifest() throws IOException, CSVFormatException {
+		Store superMart;
+		superMart = Store.getInstance();
+		superMart.creatInventory("item_properties.csv");
+		superMart.calculateExportManifest();
+		superMart.importManifest("exportManifest.csv");
+	}
+
+	/**
+	 * Test for importing a sales log 0
 	 * 
 	 * @throws IOException
 	 * @throws CSVFormatException
 	 * @throws StockException
 	 */
 	@Test
-	public void importSalesLog() throws IOException, CSVFormatException, StockException {
+	public void importSalesLog_0() throws IOException, CSVFormatException, StockException {
+		Store superMart;
+		superMart = Store.getInstance();
 		superMart.creatInventory("item_properties.csv");
+		superMart.calculateExportManifest();
+		superMart.calculateExportManifest();
+		superMart.importManifest("exportManifest.csv");
 		superMart.importSalesLog("sales_log_0.csv");
 	}
 
 	/**
-	 * Test for importing a manifest from a CSV file
+	 * Test for importing a sales log 1
 	 * 
 	 * @throws IOException
 	 * @throws CSVFormatException
 	 * @throws StockException
 	 */
 	@Test
-	public void importManifest() throws IOException, CSVFormatException, StockException {
+	public void importSalesLog_1() throws IOException, CSVFormatException, StockException {
+		Store superMart;
+		superMart = Store.getInstance();
 		superMart.creatInventory("item_properties.csv");
-		superMart.importManifest("manifest.csv");
+		superMart.calculateExportManifest();
+		superMart.calculateExportManifest();
+		superMart.importManifest("exportManifest.csv");
+		superMart.importSalesLog("sales_log_1.csv");
+	}
+
+	/**
+	 * Test for importing a sales log 2
+	 * 
+	 * @throws IOException
+	 * @throws CSVFormatException
+	 * @throws StockException
+	 */
+	@Test
+	public void importSalesLog_2() throws IOException, CSVFormatException, StockException {
+		Store superMart;
+		superMart = Store.getInstance();
+		superMart.creatInventory("item_properties.csv");
+		superMart.calculateExportManifest();
+		superMart.importManifest("exportManifest.csv");
+		superMart.importSalesLog("sales_log_2.csv");
+	}
+
+	/**
+	 * Test for importing a sales log 3
+	 * 
+	 * @throws IOException
+	 * @throws CSVFormatException
+	 * @throws StockException
+	 */
+	@Test
+	public void importSalesLog_3() throws IOException, CSVFormatException, StockException {
+		Store superMart;
+		superMart = Store.getInstance();
+		superMart.creatInventory("item_properties.csv");
+		superMart.calculateExportManifest();
+		superMart.importManifest("exportManifest.csv");
+		superMart.importSalesLog("sales_log_3.csv");
+	}
+
+	/**
+	 * Test for importing a sales log 4
+	 * 
+	 * @throws IOException
+	 * @throws CSVFormatException
+	 * @throws StockException
+	 */
+	@Test
+	public void importSalesLog_4() throws IOException, CSVFormatException, StockException {
+		Store superMart;
+		superMart = Store.getInstance();
+		superMart.creatInventory("item_properties.csv");
+		superMart.calculateExportManifest();
+		superMart.importManifest("exportManifest.csv");
+		superMart.importSalesLog("sales_log_4.csv");
 	}
 
 }

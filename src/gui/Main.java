@@ -44,7 +44,6 @@ public class Main {
 	 *            the title of the program
 	 */
 	public Main(String title) {
-		// TODO Auto-generated constructor stub
 		mainFrame = new JFrame(title);
 		mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		mainFrame.setSize(750, 500);
@@ -194,7 +193,6 @@ public class Main {
 					expManifestBtn.setEnabled(true);
 					invImported = true;
 				} catch (Exception e1) {
-					// TODO Auto-generated catch block
 					JOptionPane.showMessageDialog(mainFrame, e1.getMessage());
 				}
 
@@ -203,9 +201,8 @@ public class Main {
 			case "Sales_Log":
 				try {
 					// String file = fileChooserWindow();
-					superMart.importSalesLog("sales_log_test.csv");
+					superMart.importSalesLog("sales_log_0.csv");
 				} catch (Exception e1) {
-					// TODO Auto-generated catch block
 					JOptionPane.showMessageDialog(mainFrame, e1.getMessage());
 				}
 				updateTable();
@@ -213,10 +210,9 @@ public class Main {
 
 			case "ImportManifest":
 				try {
-					superMart.importManifest("srcexportManifest.csv");
+					superMart.importManifest("manifest.csv");
 					salesLogBtn.setEnabled(true);
 				} catch (Exception e1) {
-					// TODO Auto-generated catch block
 					JOptionPane.showMessageDialog(mainFrame, e1.getMessage());
 				}
 				updateTable();
@@ -227,7 +223,6 @@ public class Main {
 					inpManifestBtn.setEnabled(true);
 					superMart.calculateExportManifest();
 				} catch (IOException e1) {
-					// TODO Auto-generated catch block
 					JOptionPane.showMessageDialog(mainFrame, e1.getMessage());
 				}
 				break;
@@ -242,7 +237,6 @@ public class Main {
 	 * @param none
 	 */
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		new Main("Inventory Management Application");
 	}
 

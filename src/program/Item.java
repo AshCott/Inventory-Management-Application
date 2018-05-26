@@ -19,7 +19,6 @@ public class Item {
 	private double Temperature = Double.NaN;
 	private int CurrentInventory;
 	private boolean hasTemp;
-	private int quantity;
 	private int tempReorder;
 
 	/**
@@ -32,7 +31,7 @@ public class Item {
 	 * @param reorderPoint
 	 * @param temperature
 	 */
-	public Item(String name, double ManufactureCost, double sellPrice, int reorderPoint ,int reorderAmount,
+	public Item(String name, double ManufactureCost, double sellPrice, int reorderPoint, int reorderAmount,
 			double temperature) {
 		this.Name = name;
 		this.ManufactureCost = ManufactureCost;
@@ -53,7 +52,7 @@ public class Item {
 	 * @param reorderAmount
 	 * @param reorderPoint
 	 */
-	public Item(String name, double ManufactureCost, double sellPrice, int reorderPoint ,int reorderAmount ) {
+	public Item(String name, double ManufactureCost, double sellPrice, int reorderPoint, int reorderAmount) {
 		this.Name = name;
 		this.ManufactureCost = ManufactureCost;
 		this.SellPrice = sellPrice;
@@ -149,13 +148,23 @@ public class Item {
 	public void setCurrentInventory(int number) {
 		CurrentInventory = number;
 	}
-	
+
+	/**
+	 * Return the temp reorder amount
+	 * 
+	 * @return int
+	 */
 	public int getTempReorder() {
 		return tempReorder;
 	}
-	
+
+	/**
+	 * Set the temp reorder amount
+	 * 
+	 * @param tempNumber
+	 */
 	public void setTempReorderAmount(int tempNumber) {
-		this.tempReorder= tempNumber;
+		this.tempReorder = tempNumber;
 	}
-	
+
 }

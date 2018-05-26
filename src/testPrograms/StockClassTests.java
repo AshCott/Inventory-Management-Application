@@ -57,11 +57,35 @@ public class StockClassTests {
 	}
 
 	/**
-	 * Test for checking if an item exists in the inventory
+	 * Test for getting an item inventory
 	 */
 	@Test
-	public void getItem() {
+	public void getInventoryItem() {
 		assertEquals("apple", stock.getItem("apple").getName());
+	}
+
+	/**
+	 * Test adding an item to stock
+	 */
+	@Test
+	public void AddItem() {
+		stock.addItem("apple", 5);
+	}
+
+	/**
+	 * Test Getting an Item from the stock class
+	 */
+	@Test
+	public void getStockItem() {
+		assertEquals("apple", stock.getItem("apple").getName());
+	}
+
+	/**
+	 * Test Getting the stocks contents
+	 */
+	@Test
+	public void getTruckItem() {
+		System.out.println(stock.getTruckItem());
 	}
 
 }
