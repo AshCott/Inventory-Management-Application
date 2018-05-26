@@ -7,7 +7,6 @@ import java.util.HashMap;
  * cannot have a temperature item inside of it
  * 
  * @author Radhimas Djan
- * @author Radhimas Djan
  * @author
  */
 public class OrdinaryTruck extends Truck {
@@ -119,7 +118,7 @@ public class OrdinaryTruck extends Truck {
 	public HashMap<String, Integer> getCargo() {
 		return this.cargo;
 	}
-
+	
 	@Override
 	public int getExtraItemInCargo() {
 		return extraItem;

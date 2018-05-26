@@ -85,7 +85,8 @@ public class StockClassTests {
 	 */
 	@Test
 	public void getTruckItem() {
-		System.out.println(stock.getTruckItem());
+		stock.addItem("apple", 500);
+		assertEquals("item is incorrect", 500, stock.itemList.get("apple"), 0);
 	}
 
 }

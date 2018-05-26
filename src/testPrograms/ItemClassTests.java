@@ -77,15 +77,15 @@ public class ItemClassTests {
 	}
 
 	/**
-	 * Test getting item Tempreture
+	 * Test getting item Temperature
 	 */
 	@Test
 	public void getTempreture() {
-		assertEquals("Tempreture is Incorrect", 5, item.getTemperature(), 0);
+		assertEquals("Temperature is Incorrect", 5, item.getTemperature(), 0);
 	}
 
 	/**
-	 * Test checking if item has a tempreture
+	 * Test checking if item has a Temperature
 	 */
 	@Test
 	public void hasTempreture() {
