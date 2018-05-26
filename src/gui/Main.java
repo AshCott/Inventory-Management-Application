@@ -132,6 +132,23 @@ public class Main {
 			return "error";
 		}
 	}
+	
+	private String fileSaveWindow() {
+		FileNameExtensionFilter filter = new FileNameExtensionFilter("CSV File", "csv");
+		JFileChooser fileChooser = new JFileChooser();
+		fileChooser.setFileFilter(filter);
+		int result = fileChooser.showSaveDialog(mainFrame);
+		// fileChooser.setCurrentDirectory(new
+		// File(System.getProperty("C:\\Users\\LoLsA\\Desktop\\CAB302
+		// Assignment\\CAB302Ass2Group18")));
+		if (result == JFileChooser.APPROVE_OPTION) {
+			File selectedFile = fileChooser.getSelectedFile();
+			return selectedFile.getAbsolutePath();
+
+		} else {
+			return "error";
+		}
+	}
 
 	/**
 	 * Displays and updates the data in the table on the main form.
@@ -177,14 +194,15 @@ public class Main {
 		public void actionPerformed(ActionEvent e) {
 			// Get Variables
 			String command = e.getActionCommand();
-			// String file = fileChooserWindow();
-			String file = "item_properties.csv";
+
 
 			// What button was pressed
 			switch (command) {
 
 			case "Inventory":
 				try {
+					// String file = fileChooserWindow();
+					String file = "item_properties.csv";
 					superMart.creatInventory(file);
 					updateTable();
 					inventoryBtn.setEnabled(false);
@@ -201,6 +219,7 @@ public class Main {
 
 			case "Sales_Log":
 				try {
+					// String file = fileChooserWindow();
 					superMart.importSalesLog("sales_log_test.csv");
 				} catch (Exception e1) {
 					// TODO Auto-generated catch block
@@ -220,8 +239,14 @@ public class Main {
 				break;
 
 			case "ExportManifest":
-				System.out.println("EXM");
-
+				try {
+					String file = fileSaveWindow();
+					System.out.println(file);
+					superMart.calculateExportManifest();
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					JOptionPane.showMessageDialog(mainFrame, e1.getMessage());
+				}
 				break;
 
 			}
