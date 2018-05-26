@@ -17,11 +17,11 @@ public class Item {
 	private int ReorderAmount;
 
 	// make the temperature to be nan so that if its a dry goods it doesn't' have a
-	// temperature
+	// temperature and make it possible to sort later on in manifest classes
 	private double Temperature = Double.NaN;
 	private int CurrentInventory;
 	private boolean hasTemp;
-	private int tempReorder;
+//	private int tempReorder;
 
 	/**
 	 * Create a new Refrigerated Item
@@ -151,22 +151,22 @@ public class Item {
 		CurrentInventory = number;
 	}
 
-	/**
-	 * Return the temp-reorder amount
-	 * 
-	 * @return int
-	 */
-	public int getTempReorder() {
-		return tempReorder;
-	}
-
-	/**
-	 * Set the temp-reorder amount
-	 * 
-	 * @param tempNumber
-	 */
-	public void setTempReorderAmount(int tempNumber) {
-		this.tempReorder = tempNumber;
-	}
+//	/**
+//	 * Return the temp-reorder amount
+//	 * 
+//	 * @return int
+//	 */
+//	public int getTempReorder() {
+//		return tempReorder;
+//	}
+//
+//	/**
+//	 * Set the temp-reorder amount
+//	 * 
+//	 * @param tempNumber
+//	 */
+//	public void setTempReorderAmount(int tempNumber) {
+//		this.tempReorder = tempNumber;
+//	}
 
 }

@@ -6,7 +6,7 @@ import java.util.List;
 
 @SuppressWarnings("rawtypes")
 /**
- * 
+ * Stock is a collection of item where it is used for method related with multiple item
  * @author Ashley Cottrell
  *
  */
@@ -26,7 +26,7 @@ public class Stock {
 	 */
 	public void creatInventory(ArrayList<List> inventorylist) {
 		for (List item : inventorylist) {
-			// Extract Item infomation from array
+			// Extract Item information from array
 			String name = (String) item.get(0);
 			double ManufactureCost = Double.parseDouble((String) item.get(1));
 			double SellPrice = Double.parseDouble((String) item.get(2));

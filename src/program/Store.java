@@ -7,9 +7,11 @@ import java.util.HashMap;
 import java.util.List;
 
 /**
- * Store is the 
+ * Store is the class that represent the SuperMart store where every method that
+ * related to changing inventory, capital of the store is in here
+ * 
  * @author
- * @author 
+ * @author
  *
  */
 public class Store {
@@ -151,7 +153,7 @@ public class Store {
 		OrdinaryTruck ornTruck = null;
 		Manifest manifest = new Manifest();
 		double coldest = Double.MAX_VALUE;
-		
+
 		// loop the manifestfile line by line
 		for (List line : manifestFile) {
 			String content = (String) line.get(0);
@@ -207,13 +209,13 @@ public class Store {
 					itemName = (String) content;
 					Item temp = inventory.getItem(itemName);
 					// set the temperature of the to be as cold as the coldest item
-					if(temp.hasTempreture()) {
+					if (temp.hasTempreture()) {
 						if (coldest > temp.getTemperature()) {
 							coldest = temp.getTemperature();
 							refTruck.setTemperature(coldest);
 						}
 					}
-					
+
 					// check if item does exist in the inventory
 					if (temp != null) {
 						int currentInventoryInStore = temp.getCurrentInventory();
@@ -223,7 +225,10 @@ public class Store {
 						// get the total prices of the product in the turck
 						totalPriceInRefrigrated += temp.getManufactureCost() * numbBought;
 						refTruck.setTotalPriceInTruck(totalPriceInRefrigrated);
-					} 
+					} else {
+						// so item is null throw exception
+						throw new DeliveryException("Cannot deliver an item that is not in item properties");
+					}
 				}
 			}
 
@@ -254,12 +259,23 @@ public class Store {
 		return temp;
 	}
 
+	// /**
+	// * ?????????
+	// * @throws IOException
+	// */
+	// public void calculateExportManifest() throws IOException {
+	// Manifest manifest = new Manifest();
+	// double manifestCost = manifest.generateManifest();
+	// }
+
 	/**
-	 * ?????????
+	 * exporting the manifest based on generate manifest method on the manifest
+	 * classes
+	 * 
 	 * @throws IOException
 	 */
-	public void calculateExportManifest() throws IOException {
+	public void exportingManifest() throws IOException {
 		Manifest manifest = new Manifest();
-		double manifestCost = manifest.generateManifest();
+		manifest.generateManifest();
 	}
 }

@@ -4,17 +4,9 @@ import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.SortedSet;
-import java.util.TreeMap;
-import java.util.TreeSet;
 
 /**
  * This classes is manifest where it represent a collection of trucks it will be
@@ -66,19 +58,18 @@ public class Manifest {
 	 * The generate manifest is a method that export the manifest to csv based on
 	 * the amount of inventory the way the method work is that it will loop through
 	 * an inventory and check if the item in the inventory is less than reorder
-	 * point if yes then reorder if not continue to the next item
+	 * point if yes then reorder if not continue to the next item, afterward it will
+	 * generate a csv
 	 * 
-	 * @return The total price of the exporting manifest item and the truck
 	 * @throws IOException
 	 *             throws an IO exception if there's something wrong in writing the
 	 *             csv
 	 * 
 	 */
-	public double generateManifest() throws IOException {
-		double itemCost = 0;
-		double deliveryTruckCost = 0;
-
+	public void generateManifest() throws IOException {
+		
 		// this what will keep track of item
+		// initialize as a -1 so that it will get in the while loop which is crucial
 		int extraItem = -1;
 		HashMap<String, Item> inventory = superMart.getInventory();
 		ArrayList<Item> whatToBuy = new ArrayList<Item>();
@@ -94,10 +85,10 @@ public class Manifest {
 
 		// sort the arraylist
 		whatToBuy.sort((Comparator.comparing(Item::getTemperature)));
+		
 		// make linked hashmap so that it is possible to put stuff based on the
 		// insertion order
 		// by using the arraylist from the whatToBuy it will be a sorted map\
-
 		LinkedHashMap<String, Item> sortedInventory = new LinkedHashMap<String, Item>();
 
 		for (Item each : whatToBuy) {
@@ -113,8 +104,6 @@ public class Manifest {
 
 			// check if the item is indeed less than the reorder point
 			if (sortedInventory.get(key).getCurrentInventory() <= sortedInventory.get(key).getReorderPoint()) {
-				// get the total item cost
-				itemCost += sortedInventory.get(key).getManufactureCost() * sortedInventory.get(key).getReorderAmount();
 
 				// the while loop will check if there's a leftover item that exceed from the
 				// truck capacity
@@ -300,8 +289,6 @@ public class Manifest {
 		}
 
 		this.makeCSV("exportManifest");
-		deliveryTruckCost = calculateTruckCost();
-		return itemCost + deliveryTruckCost;
 	}
 
 	/**
@@ -334,20 +321,22 @@ public class Manifest {
 
 	}
 
-	/**
-	 * This method will return the truck calculation
-	 * 
-	 * @return
-	 */
-	public double calculateTruckCost() {
-		double cost = 0;
-		for (int index = 0; index < this.refTruck.size(); index++) {
-			cost += this.refTruck.get(index).costCalculation(this.refTruck.get(index).getTemperature());
-		}
-
-		for (int index = 0; index < this.ornTruck.size(); index++) {
-			cost += this.ornTruck.get(index).costCalculation(this.ornTruck.get(index).getQuantity());
-		}
-		return cost;
-	}
+	// /**
+	// * This method will return the truck calculation
+	// *
+	// * @return
+	// */
+	// public double calculateTruckCost() {
+	// double cost = 0;
+	// for (int index = 0; index < this.refTruck.size(); index++) {
+	// cost +=
+	// this.refTruck.get(index).costCalculation(this.refTruck.get(index).getTemperature());
+	// }
+	//
+	// for (int index = 0; index < this.ornTruck.size(); index++) {
+	// cost +=
+	// this.ornTruck.get(index).costCalculation(this.ornTruck.get(index).getQuantity());
+	// }
+	// return cost;
+	// }
 }

@@ -222,7 +222,7 @@ public class Main {
 			case "ExportManifest":
 				try {
 					inpManifestBtn.setEnabled(true);
-					superMart.calculateExportManifest();
+					superMart.exportingManifest();
 				} catch (IOException e1) {
 					JOptionPane.showMessageDialog(mainFrame, e1.getMessage());
 				}
