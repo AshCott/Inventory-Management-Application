@@ -102,9 +102,11 @@ public class Main {
 		topPanel.add(controlPanel);
 
 		controlPanel.add(inventoryBtn);
-		controlPanel.add(salesLogBtn);
-		controlPanel.add(inpManifestBtn);
 		controlPanel.add(expManifestBtn);
+		controlPanel.add(inpManifestBtn);
+		controlPanel.add(salesLogBtn);
+		
+		
 
 		mainFrame.add(sp);
 
@@ -206,8 +208,6 @@ public class Main {
 					superMart.creatInventory(file);
 					updateTable();
 					inventoryBtn.setEnabled(false);
-					salesLogBtn.setEnabled(true);
-					inpManifestBtn.setEnabled(true);
 					expManifestBtn.setEnabled(true);
 					invImported = true;
 				} catch (Exception e1) {
@@ -230,7 +230,8 @@ public class Main {
 
 			case "ImportManifest":
 				try {
-					superMart.importManifest("manifest.csv");
+					superMart.importManifest("srcexportManifest.csv");
+					salesLogBtn.setEnabled(true);
 				} catch (Exception e1) {
 					// TODO Auto-generated catch block
 					JOptionPane.showMessageDialog(mainFrame, e1.getMessage());
@@ -242,6 +243,7 @@ public class Main {
 				try {
 					String file = fileSaveWindow();
 					System.out.println(file);
+					inpManifestBtn.setEnabled(true);
 					superMart.calculateExportManifest();
 				} catch (IOException e1) {
 					// TODO Auto-generated catch block
