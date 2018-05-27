@@ -57,12 +57,6 @@ public class RefrigratedTruck extends Truck {
 		itemCount += quantity;
 	}
 
-	public void addItem(String itemName, Integer quantity) {
-		cargoItems.addItem(itemName, quantity);
-		itemCount += quantity;
-		this.quantity += quantity;
-	}
-
 	@Override
 	public void setTotalPriceInTruck(double totalPrice) {
 		this.totalPrice = totalPrice;
