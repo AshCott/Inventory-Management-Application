@@ -52,7 +52,7 @@ public class Main {
 		mainFrame.setLayout(new GridLayout(2, 1));
 
 		// Create Panels
-		capitalLbl = new JLabel("Import Inventory Properties to Begin", JLabel.CENTER);
+		capitalLbl = new JLabel("Capital: $100,000.00", JLabel.CENTER);
 		controlPanel = new JPanel();
 		controlPanel.setLayout(new FlowLayout());
 		topPanel = new JPanel();

@@ -154,6 +154,21 @@ public class Store {
 		Manifest manifest = new Manifest();
 		double coldest = Double.MAX_VALUE;
 
+		// check the manifest file if there is an item that doesn't exist in the
+		// inventory first if yes throw a delivery exception
+		for (List line : manifestFile) {
+			String content = (String) line.get(0);
+			isTruckType = content.charAt(0) == '>';
+			if (isTruckType) {
+
+			} else {
+				itemName = (String) content;
+				if (!inventory.itemExists(itemName)) {
+					throw new DeliveryException("Item doesnt exist in inventory \n" + itemName);
+				}
+			}
+		}
+
 		// loop the manifestfile line by line
 		for (List line : manifestFile) {
 			String content = (String) line.get(0);
@@ -225,9 +240,6 @@ public class Store {
 						// get the total prices of the product in the turck
 						totalPriceInRefrigrated += temp.getManufactureCost() * numbBought;
 						refTruck.setTotalPriceInTruck(totalPriceInRefrigrated);
-					} else {
-						// so item is null throw exception
-						throw new DeliveryException("Cannot deliver an item that is not in item properties");
 					}
 				}
 			}
