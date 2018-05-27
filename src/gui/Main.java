@@ -182,15 +182,18 @@ public class Main {
 
 			case "Inventory":
 				try {
-					// String file = fileChooserWindow();
-					String file = "item_properties.csv";
+					String file = fileChooserWindow();
+					if(file =="error") {
+						break;
+					}
+					//String file = "item_properties.csv";
 					superMart.creatInventory(file);
 					updateTable();
 					inventoryBtn.setEnabled(false);
 					expManifestBtn.setEnabled(true);
 					invImported = true;
 				} catch (Exception e1) {
-					JOptionPane.showMessageDialog(mainFrame, e1.getMessage());
+					JOptionPane.showMessageDialog(mainFrame, e1.getMessage(), e1.getClass().getName(), JOptionPane.ERROR_MESSAGE);
 				}
 
 				break;
@@ -198,10 +201,13 @@ public class Main {
 			case "Sales_Log":
 				try {
 					String file = fileChooserWindow();
+					if(file =="error") {
+						break;
+					}
 					superMart.importSalesLog(file);
 //					superMart.importSalesLog("sales_log_0.csv");
 				} catch (Exception e1) {
-					JOptionPane.showMessageDialog(mainFrame, e1.getMessage());
+					JOptionPane.showMessageDialog(mainFrame, e1.getMessage(), e1.getClass().getName(), JOptionPane.ERROR_MESSAGE);
 				}
 				updateTable();
 				break;
@@ -209,12 +215,16 @@ public class Main {
 			case "ImportManifest":
 				try {
 					String file = fileChooserWindow();
+					if(file =="error") {
+						break;
+					}
 					// String file = "item_properties.csv";
 					// superMart.importManifest("exportManifest.csv");
 					superMart.importManifest(file);
 					salesLogBtn.setEnabled(true);
 				} catch (Exception e1) {
-					JOptionPane.showMessageDialog(mainFrame, e1.getMessage());
+					JOptionPane.showMessageDialog(mainFrame, e1.getMessage(), e1.getClass().getName(), JOptionPane.ERROR_MESSAGE);
+					
 				}
 				updateTable();
 				break;
@@ -223,8 +233,9 @@ public class Main {
 				try {
 					inpManifestBtn.setEnabled(true);
 					superMart.exportingManifest();
+					JOptionPane.showMessageDialog(mainFrame, "Exported Manifest Successfully to exportManifest.csv");
 				} catch (IOException e1) {
-					JOptionPane.showMessageDialog(mainFrame, e1.getMessage());
+					JOptionPane.showMessageDialog(mainFrame, e1.getMessage(), e1.getClass().getName(), JOptionPane.ERROR_MESSAGE);
 				}
 				break;
 
@@ -238,6 +249,7 @@ public class Main {
 	 * @param none
 	 */
 	public static void main(String[] args) {
+		System.out.println(System.getProperty("java.version"));
 		new Main("Inventory Management Application");
 	}
 
