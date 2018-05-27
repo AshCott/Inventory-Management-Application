@@ -6,32 +6,43 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+@SuppressWarnings("rawtypes")
 /**
  * Store is the class that represent the SuperMart store where every method that
  * related to changing inventory, capital of the store is in here
  * 
- * @author
- * @author
+ * @author Ashley Cottrell
+ * @author Radhimas Djan
  *
  */
 public class Store {
 	private String name;
 	double capital;
+
 	ArrayList<List> inventorylist;
 	private static Store firstInstance = new Store();
 
 	Stock inventory = new Stock();
 
+	/**
+	 * Construct a store
+	 */
 	private Store() {
 		this.name = "SuperMart";
 		this.capital = 100000;
 	}
 
+	/**
+	 * Return the first instance of the store for use in singlton pattern
+	 * 
+	 * @return Return the frist instance of the store
+	 */
 	public static Store getInstance() {
 		return firstInstance;
 	}
 
 	/**
+	 * Get the Store Capital
 	 * 
 	 * @return The formatted store capital as currency i.e. $1,000,000
 	 */
@@ -41,6 +52,8 @@ public class Store {
 	}
 
 	/**
+	 * Get the store name
+	 * 
 	 * @return The Store Name as String
 	 */
 	public String getStoreName() {
@@ -51,7 +64,7 @@ public class Store {
 	 * Import and process the inventory csv files
 	 * 
 	 * @param link
-	 *            to the csv file
+	 *            file location of the csv file
 	 * @throws IOException
 	 * @throws CSVFormatException
 	 */
@@ -71,7 +84,7 @@ public class Store {
 	 * Import and process the sales Log CSV files
 	 * 
 	 * @param link
-	 *            to the csv file
+	 *            file location of the csv file
 	 * @throws IOException
 	 * @throws CSVFormatException
 	 * @throws StockException

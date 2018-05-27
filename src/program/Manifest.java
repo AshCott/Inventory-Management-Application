@@ -9,12 +9,12 @@ import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 
+@SuppressWarnings("rawtypes")
 /**
  * This classes is manifest where it represent a collection of trucks it will be
  * used to generate manifest, and building CSV needed for importing it later on
  * 
  * @author Radhimas Djan
- * @author
  */
 
 public class Manifest {

@@ -1,6 +1,5 @@
 package program;
 
-import java.lang.Math.*;
 import java.util.HashMap;
 
 /**
@@ -8,14 +7,11 @@ import java.util.HashMap;
  * can have a temperature item inside of it
  * 
  * @author Radhimas Djan
- * @author
  * 
  */
 public class RefrigratedTruck extends Truck {
 	private double temperature;
 	public final double CARGO_CAPACITY = 800;
-	private final double MAX_TEMPERATURE = 10;
-	private final double MIN_TEMPERATURE = -20;
 	private int extraItem;
 	private double quantity;
 	private HashMap<String, Integer> cargo;

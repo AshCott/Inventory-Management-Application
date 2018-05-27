@@ -86,7 +86,7 @@ public class IOCSVTest {
 	public void Incorrect_File_Extension() throws IOException, CSVFormatException {
 		ArrayList<List> b = importer.readCSVFile("csv_failed_tests/Incorrect_File_Extension.txt", "inventory");
 	}
-	
+
 	////////////////////// Import Item Properties Tests///////////////////////
 
 	/**

@@ -6,12 +6,14 @@ import java.util.List;
 
 @SuppressWarnings("rawtypes")
 /**
- * Stock is a collection of item where it is used for method related with multiple item
+ * Stock is a collection of item where it is used for method related with
+ * multiple item
+ * 
  * @author Ashley Cottrell
  *
  */
 public class Stock {
-	
+
 	public static HashMap<String, Item> inventory = new HashMap<String, Item>();
 	public HashMap<String, Integer> itemList = new HashMap<String, Integer>();
 
@@ -72,7 +74,9 @@ public class Stock {
 	 * Add an item to a stock
 	 * 
 	 * @param itemName
+	 *            the name of the item
 	 * @param quantity
+	 *            the number of item
 	 */
 	public void addItem(String itemName, int quantity) {
 		itemList.put(itemName, quantity);
@@ -91,6 +95,7 @@ public class Stock {
 	 * Check if item exists within the inventory
 	 * 
 	 * @param name
+	 *            name of the item
 	 * @return boolean
 	 */
 	public boolean itemExists(String name) {

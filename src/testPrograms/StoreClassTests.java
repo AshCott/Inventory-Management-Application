@@ -15,6 +15,7 @@ import program.Store;
  * Tests for store class
  * 
  * @author Ashley Cottrell
+ * @author Radhimas Djan
  *
  */
 public class StoreClassTests {

@@ -1,14 +1,12 @@
 package program;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
  * This class provides a skeletal implementation for the truck to minimize
  * effort require to implement it in the refrigerated truck and ordinary truck
  * 
- * @author Radhimas Djan
- * @author
+ * @author Radhimas Djana
  *
  */
 public abstract class Truck {

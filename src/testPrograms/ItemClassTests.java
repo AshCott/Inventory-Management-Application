@@ -2,13 +2,9 @@ package testPrograms;
 
 import static org.junit.Assert.assertEquals;
 
-import java.io.IOException;
-
 import org.junit.Before;
 import org.junit.Test;
 
-import program.CSVFormatException;
-import program.DeliveryException;
 import program.IOCSV;
 import program.Manifest;
 import program.Store;

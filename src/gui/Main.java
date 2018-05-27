@@ -94,8 +94,6 @@ public class Main {
 		model.addColumn("Inventory");
 
 		// Add objects to frame
-		// mainFrame.add(capitalLbl);
-		// mainFrame.add(controlPanel);
 		mainFrame.add(topPanel);
 		topPanel.add(capitalLbl);
 		topPanel.add(controlPanel);
@@ -120,9 +118,6 @@ public class Main {
 		JFileChooser fileChooser = new JFileChooser();
 		fileChooser.setFileFilter(filter);
 		int result = fileChooser.showOpenDialog(mainFrame);
-		// fileChooser.setCurrentDirectory(new
-		// File(System.getProperty("C:\\Users\\LoLsA\\Desktop\\CAB302
-		// Assignment\\CAB302Ass2Group18")));
 		if (result == JFileChooser.APPROVE_OPTION) {
 			File selectedFile = fileChooser.getSelectedFile();
 			return selectedFile.getAbsolutePath();
@@ -183,10 +178,9 @@ public class Main {
 			case "Inventory":
 				try {
 					String file = fileChooserWindow();
-					if(file =="error") {
+					if (file == "error") {
 						break;
 					}
-					//String file = "item_properties.csv";
 					superMart.creatInventory(file);
 					updateTable();
 					inventoryBtn.setEnabled(false);
@@ -194,7 +188,8 @@ public class Main {
 					inpManifestBtn.setEnabled(true);
 					invImported = true;
 				} catch (Exception e1) {
-					JOptionPane.showMessageDialog(mainFrame, e1.getMessage(), e1.getClass().getName(), JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(mainFrame, e1.getMessage(), e1.getClass().getName(),
+							JOptionPane.ERROR_MESSAGE);
 				}
 
 				break;
@@ -202,13 +197,13 @@ public class Main {
 			case "Sales_Log":
 				try {
 					String file = fileChooserWindow();
-					if(file =="error") {
+					if (file == "error") {
 						break;
 					}
 					superMart.importSalesLog(file);
-//					superMart.importSalesLog("sales_log_0.csv");
 				} catch (Exception e1) {
-					JOptionPane.showMessageDialog(mainFrame, e1.getMessage(), e1.getClass().getName(), JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(mainFrame, e1.getMessage(), e1.getClass().getName(),
+							JOptionPane.ERROR_MESSAGE);
 				}
 				updateTable();
 				break;
@@ -216,16 +211,15 @@ public class Main {
 			case "ImportManifest":
 				try {
 					String file = fileChooserWindow();
-					if(file =="error") {
+					if (file == "error") {
 						break;
 					}
-					// String file = "item_properties.csv";
-					// superMart.importManifest("exportManifest.csv");
 					superMart.importManifest(file);
 					salesLogBtn.setEnabled(true);
 				} catch (Exception e1) {
-					JOptionPane.showMessageDialog(mainFrame, e1.getMessage(), e1.getClass().getName(), JOptionPane.ERROR_MESSAGE);
-					
+					JOptionPane.showMessageDialog(mainFrame, e1.getMessage(), e1.getClass().getName(),
+							JOptionPane.ERROR_MESSAGE);
+
 				}
 				updateTable();
 				break;
@@ -235,7 +229,8 @@ public class Main {
 					superMart.exportingManifest();
 					JOptionPane.showMessageDialog(mainFrame, "Exported Manifest Successfully to exportManifest.csv");
 				} catch (Exception e1) {
-					JOptionPane.showMessageDialog(mainFrame, e1.getMessage(), e1.getClass().getName(), JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(mainFrame, e1.getMessage(), e1.getClass().getName(),
+							JOptionPane.ERROR_MESSAGE);
 				}
 				break;
 

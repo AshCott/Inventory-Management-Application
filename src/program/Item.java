@@ -5,7 +5,6 @@ package program;
  * supermart store
  * 
  * @author Ashley Cottrell
- * @author
  *
  */
 public class Item {
@@ -26,11 +25,17 @@ public class Item {
 	 * Create a new Refrigerated Item
 	 * 
 	 * @param name
+	 *            The name of the Item
 	 * @param ManufactureCost
+	 *            The Manufacture cost of the item
 	 * @param sellPrice
+	 *            The Sell price of hte item
 	 * @param reorderAmount
+	 *            the Re-Order Amount of the item
 	 * @param reorderPoint
+	 *            The Re-Roder Amount of the item
 	 * @param temperature
+	 *            The Tempreture of an item
 	 */
 	public Item(String name, double ManufactureCost, double sellPrice, int reorderPoint, int reorderAmount,
 			double temperature) {
@@ -48,10 +53,15 @@ public class Item {
 	 * Create a new Un-refrigerated Item
 	 * 
 	 * @param name
+	 *            The name of the Item
 	 * @param ManufactureCost
+	 *            The Manufacture cost of the item
 	 * @param sellPrice
+	 *            The Sell price of hte item
 	 * @param reorderAmount
+	 *            the Re-Order Amount of the item
 	 * @param reorderPoint
+	 *            The Re-Roder Amount of the item
 	 */
 	public Item(String name, double ManufactureCost, double sellPrice, int reorderPoint, int reorderAmount) {
 		this.Name = name;

@@ -1,9 +1,6 @@
 package testPrograms;
 
 import static org.junit.Assert.assertEquals;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
 import org.junit.*;
 import program.*;
 
@@ -62,7 +59,6 @@ public class TruckTest {
 	public void GetCostCalculationRefrigratorMaxTemp() {
 		assertEquals(998, truckRefrigrated.costCalculation(10), 0.02);
 	}
-
 
 	/**
 	 * 

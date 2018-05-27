@@ -7,7 +7,6 @@ import java.util.HashMap;
  * cannot have a temperature item inside of it
  * 
  * @author Radhimas Djan
- * @author
  */
 public class OrdinaryTruck extends Truck {
 	private double quantity;

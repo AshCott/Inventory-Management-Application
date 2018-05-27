@@ -1,11 +1,9 @@
 package testPrograms;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertThat;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -22,7 +20,7 @@ import program.Truck;
 
 /**
  * 
- * @author decade
+ * @author Radhimas Djan
  *
  */
 public class ManifestClassTests {
