@@ -127,12 +127,8 @@ public class Store {
 	}
 
 	/**
-	 * 
-	 * The import manifest is a method that will import a csv manifest file that
-	 * were made either by exporting manifest or by other method, the way the
-	 * program work is that first it read the csv file then check the manifest if
-	 * the item inside the manifest do exist in inventory then calculate the capital based on the
-	 * amount of quantity of item,manufacture cost, truck and temperature
+	 * importing the manifest based on importing manifest method on the manifest
+	 * classes
 	 * 
 	 * @param file
 	 *            The file name of the manifest that going to be imported
@@ -140,131 +136,8 @@ public class Store {
 	 * @throws CSVFormatException
 	 */
 	public void importManifest(String file) throws IOException, CSVFormatException, DeliveryException {
-		IOCSV importer = new IOCSV();
-		String itemName;
-		ArrayList<List> manifestFile = null;
-		// see if the manifest file is indeed in correct format if not throw exception
-		try {
-			manifestFile = importer.readCSVFile(file, "manifest");
-		} catch (CSVFormatException e) {
-			throw e;
-		}
-		Boolean isTruckType;
-		Boolean isRefrigerated = false;
-		Boolean isOrdinary = false;
-		double totalProductBoughtOrdinary = 0.0;
-		double totalProductBoughtRefrigrated = 0.0;
-		double totalPriceInOrdinary = 0.0;
-		double totalPriceInRefrigrated = 0.0;
-		RefrigratedTruck refTruck = null;
-		OrdinaryTruck ornTruck = null;
 		Manifest manifest = new Manifest();
-		double coldest = Double.MAX_VALUE;
-
-		// check the manifest file if there is an item that doesn't exist in the
-		// inventory first if yes throw a delivery exception
-		for (List line : manifestFile) {
-			String content = (String) line.get(0);
-			isTruckType = content.charAt(0) == '>';
-			if (isTruckType) {
-
-			} else {
-				itemName = (String) content;
-				if (!inventory.itemExists(itemName)) {
-					throw new DeliveryException("Item doesnt exist in inventory \n" + itemName);
-				}
-			}
-		}
-
-		// loop the manifestfile line by line
-		for (List line : manifestFile) {
-			String content = (String) line.get(0);
-			// check if the line start with '>' if it does then it's the line for the truck
-			// type
-			isTruckType = content.charAt(0) == '>';
-
-			if (isTruckType) {
-				// check if the truck type is refrigerated or ordinary
-				if (content.equals(">Refrigerated")) {
-					// if refrigerated make a new refrigerated and add it to the truck
-					refTruck = new RefrigratedTruck();
-					manifest.saveRefTruck(refTruck);
-					coldest = Double.MAX_VALUE;
-					isRefrigerated = true;
-					isOrdinary = false;
-					totalPriceInRefrigrated = 0.0;
-				} else if (content.equals(">Ordinary")) {
-					// else if ordinary then make a new ordinary and add it to the truck
-					ornTruck = new OrdinaryTruck();
-					manifest.saveOrnTruck(ornTruck);
-					isOrdinary = true;
-					isRefrigerated = false;
-					totalPriceInOrdinary = 0.0;
-					totalProductBoughtOrdinary = 0.0;
-				}
-			} else {
-				// if content is not about the truck type
-				Integer numbBought = Integer.parseInt((String) line.get(1));
-				// check if it's ordinary truck
-				if (isOrdinary) {
-					// if yes made a new one and increase the quantity of the truck
-					ornTruck.addItemImportManifest(content, numbBought);
-					itemName = (String) content;
-					Item temp = inventory.getItem(itemName);
-					totalProductBoughtOrdinary += numbBought;
-					ornTruck.setQuantity(totalProductBoughtOrdinary);
-					// check if item does exist in the item properties
-					if (temp != null) {
-						// update the current inventory
-						int currentInventoryInStore = temp.getCurrentInventory();
-						currentInventoryInStore += numbBought;
-						temp.setCurrentInventory(currentInventoryInStore);
-						// get the total prices of the product in the turck
-						totalPriceInOrdinary += temp.getManufactureCost() * numbBought;
-						ornTruck.setTotalPriceInTruck(totalPriceInOrdinary);
-					} else {
-						// so item is null throw exception
-						throw new DeliveryException("Cannot deliver an item that is not in item properties");
-					}
-				} else {
-					refTruck.addItemImportManifest(content, numbBought);
-					itemName = (String) content;
-					Item temp = inventory.getItem(itemName);
-					// set the temperature of the to be as cold as the coldest item
-					if (temp.hasTempreture()) {
-						if (coldest > temp.getTemperature()) {
-							coldest = temp.getTemperature();
-							refTruck.setTemperature(coldest);
-						}
-					}
-
-					// check if item does exist in the inventory
-					if (temp != null) {
-						int currentInventoryInStore = temp.getCurrentInventory();
-						currentInventoryInStore += numbBought;
-						// update the current inventory
-						temp.setCurrentInventory(currentInventoryInStore);
-						// get the total prices of the product in the turck
-						totalPriceInRefrigrated += temp.getManufactureCost() * numbBought;
-						refTruck.setTotalPriceInTruck(totalPriceInRefrigrated);
-					}
-				}
-			}
-
-		} // end loop
-		for (OrdinaryTruck each : manifest.ornTruck) {
-			// calculate each ordinary truck
-			capital -= each.costCalculation(each.getQuantity());
-			// calculate each item in ordinary truck
-			capital -= each.getTotalPriceInTruck();
-		}
-		for (RefrigratedTruck each : manifest.refTruck) {
-			// calculate each refrigerated truck
-			capital -= each.costCalculation(each.getTemperature());
-			// calculating each item
-			capital -= each.getTotalPriceInTruck();
-		}
-
+		manifest.importingManifest(file);
 		System.out.println("Import Manifest: Success");
 	}
 

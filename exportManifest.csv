@@ -1,26 +1,45 @@
 >Ordinary
-biscuits,575
-nuts,125
+biscuits,225
+bread,200
+chips,200
+nuts,75
 rice,300
 >Ordinary
-nuts,125
+nuts,175
 beans,525
 pasta,250
-chocolate,100
+chocolate,50
 >Ordinary
-chocolate,275
+chocolate,325
 >Refrigerated
 ice cream,250
-fish,225
+frozen meat,550
+>Refrigerated
+frozen meat,25
+fish,125
 frozen vegetable mix,325
+ice,325
 >Refrigerated
-fish,250
+fish,350
 milk,425
-beef,125
+beef,25
 >Refrigerated
-chicken,375
-beef,425
+beef,525
+cheese,275
 >Refrigerated
-tomatoes,400
-chicken,50
+chicken,300
+yoghurt,325
+cheese,175
+>Refrigerated
+chicken,125
+celery,350
+asparagus,275
+grapes,50
+>Refrigerated
+mushrooms,275
 lettuce,350
+grapes,175
+>Refrigerated
+mushrooms,50
+tomatoes,400
+biscuits,350
