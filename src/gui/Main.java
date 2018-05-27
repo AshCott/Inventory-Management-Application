@@ -191,6 +191,7 @@ public class Main {
 					updateTable();
 					inventoryBtn.setEnabled(false);
 					expManifestBtn.setEnabled(true);
+					inpManifestBtn.setEnabled(true);
 					invImported = true;
 				} catch (Exception e1) {
 					JOptionPane.showMessageDialog(mainFrame, e1.getMessage(), e1.getClass().getName(), JOptionPane.ERROR_MESSAGE);
@@ -231,7 +232,6 @@ public class Main {
 
 			case "ExportManifest":
 				try {
-					inpManifestBtn.setEnabled(true);
 					superMart.exportingManifest();
 					JOptionPane.showMessageDialog(mainFrame, "Exported Manifest Successfully to exportManifest.csv");
 				} catch (Exception e1) {
