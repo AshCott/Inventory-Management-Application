@@ -128,7 +128,14 @@ public class Store {
 
 	/**
 	 * 
+	 * The import manifest is a method that will import a csv manifest file that
+	 * were made either by exporting manifest or by other method, the way the
+	 * program work is that first it read the csv file then check the manifest if
+	 * the item inside the manifest do exist in inventory then calculate the capital based on the
+	 * amount of quantity of item,manufacture cost, truck and temperature
+	 * 
 	 * @param file
+	 *            The file name of the manifest that going to be imported
 	 * @throws IOException
 	 * @throws CSVFormatException
 	 */
