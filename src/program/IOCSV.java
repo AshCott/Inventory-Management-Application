@@ -221,15 +221,15 @@ public class IOCSV {
 				try {
 					Tempreture = Integer.parseInt((String) item.get(5));
 				} catch (Exception e) {
-					throw new CSVFormatException("Tempreture is not a number \n" + item);
+					throw new CSVFormatException("Temperature  is not a number \n" + item);
 				}
 
 				// Checks if tempreture is within the allowed range
 				if (Tempreture > 10) {
-					throw new CSVFormatException("Tempreture is greater than 10 degrees \n" + item);
+					throw new CSVFormatException("Temperature is greater than 10 degrees \n" + item);
 				}
 				if (Tempreture < -20) {
-					throw new CSVFormatException("Tempreture is less than -20 degrees \n" + item);
+					throw new CSVFormatException("Temperature is less than -20 degrees \n" + item);
 				}
 			}
 		}
