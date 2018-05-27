@@ -28,10 +28,8 @@ import program.Truck;
 public class ManifestClassTests {
 
 	Store superMart;
-	Store superMart2;
 	Manifest manifest;
 	Item temp;
-
 	Truck truck;
 	OrdinaryTruck truckOrdinary;
 	RefrigratedTruck truckRefrigrated;
@@ -45,7 +43,6 @@ public class ManifestClassTests {
 		manifest.ornTruck = new ArrayList<OrdinaryTruck>();
 		manifest.refTruck = new ArrayList<RefrigratedTruck>();
 		temp = new Item(null, 0, 0, 0, 0);
-		
 		superMart = Store.getInstance();
 	}
 
@@ -68,6 +65,7 @@ public class ManifestClassTests {
 		manifest.saveRefTruck(truckRefrigrated);
 		assertEquals(1, manifest.refTruck.size());
 	}
+
 	/**
 	 * test if the first initiation of generate manifest result return an inventory
 	 * where it current inventory for each item is the reorder amount of the
@@ -80,10 +78,12 @@ public class ManifestClassTests {
 	 */
 	@Test
 	public void initManifest() throws IOException, CSVFormatException, DeliveryException {
+
 		superMart.creatInventory("item_properties.csv");
+		superMart.reset();
 		manifest.generateManifest();
 		superMart.importManifest("exportManifest.csv");
-		
+
 		// check if the inventory is now equal to the reorder amount
 		assertEquals(superMart.getInventory().get("rice").getReorderAmount(),
 				superMart.getInventory().get("rice").getCurrentInventory());
@@ -138,49 +138,74 @@ public class ManifestClassTests {
 	/**
 	 * test to see if inventory is already stocked no need to do anything in
 	 * generate manifest and throw an exception
-	 * @throws DeliveryException 
-	 * @throws IOException 
+	 * 
+	 * @throws DeliveryException
+	 * @throws IOException
 	 */
 	@Test(expected = DeliveryException.class)
 	public void generateManifestThrowException() throws IOException, DeliveryException {
 		manifest.generateManifest();
 	}
-	@Test
-	public void finalManifestReadMe() throws IOException, CSVFormatException, DeliveryException, StockException {
-		
-		System.out.println(Store.getInstance().getStoreCapital());
-		Store.getInstance().importSalesLog("sales_log_0.csv");
-		manifest.generateManifest();
-		Store.getInstance().importManifest("exportManifest.csv");
-		System.out.println(Store.getInstance().getStoreCapital());
-		Store.getInstance().importSalesLog("sales_log_1.csv");
-		System.out.println(Store.getInstance().getStoreCapital());
-		for(String each: Store.getInstance().getInventory().keySet()) {
-			System.out.println(Store.getInstance().getInventory().get(each).getCurrentInventory());
-		}
-		System.out.println(Store.getInstance().getInventory().get("rice"));
-		System.out.println("after weird shit");
-		for(String each: Store.getInstance().getInventory().keySet()) {
-			System.out.println(Store.getInstance().getInventory().get(each).getCurrentInventory());
-		}
-		manifest.generateManifest();
-		Store.getInstance().importManifest("exportManifest.csv");
-		System.out.println("TETEETETETTE");
-		System.out.println(Store.getInstance().getStoreCapital()); 
-		
-	}
-
-	
-	// check initialize and final result of inventory
 
 	/**
+	 * Test to see if the last inventory is the same with the one written on the pdf
 	 * 
 	 * @throws IOException
-	 * @throws DeliveryException 
+	 * @throws CSVFormatException
+	 * @throws DeliveryException
+	 * @throws StockException
 	 */
 	@Test
-	public void exportManifest() throws IOException, DeliveryException {
-		manifest = new Manifest();
-		manifest.generateManifest();
+	public void finalManifestReadMe() throws IOException, CSVFormatException, DeliveryException, StockException {
+
+		Store superMart;
+		superMart = Store.getInstance();
+		superMart.reset();
+		superMart.creatInventory("item_properties.csv");
+		superMart.exportingManifest();
+		superMart.importManifest("exportManifest.csv");
+		superMart.importSalesLog("sales_log_0.csv");
+		superMart.exportingManifest();
+		superMart.importManifest("exportManifest.csv");
+		superMart.importSalesLog("sales_log_1.csv");
+		superMart.exportingManifest();
+		superMart.importManifest("exportManifest.csv");
+		superMart.importSalesLog("sales_log_2.csv");
+		superMart.exportingManifest();
+		superMart.importManifest("exportManifest.csv");
+		superMart.importSalesLog("sales_log_3.csv");
+		superMart.exportingManifest();
+		superMart.importManifest("exportManifest.csv");
+		superMart.importSalesLog("sales_log_4.csv");
+		superMart.exportingManifest();
+		superMart.importManifest("exportManifest.csv");
+
+		// check if the assert of each item is correct
+		assertEquals(386, superMart.getInventory().get("rice").getCurrentInventory());
+		assertEquals(805, superMart.getInventory().get("beans").getCurrentInventory());
+		assertEquals(343, superMart.getInventory().get("pasta").getCurrentInventory());
+		assertEquals(853, superMart.getInventory().get("biscuits").getCurrentInventory());
+		assertEquals(357, superMart.getInventory().get("nuts").getCurrentInventory());
+		assertEquals(145, superMart.getInventory().get("chips").getCurrentInventory());
+		assertEquals(540, superMart.getInventory().get("chocolate").getCurrentInventory());
+		assertEquals(182, superMart.getInventory().get("bread").getCurrentInventory());
+		assertEquals(225, superMart.getInventory().get("mushrooms").getCurrentInventory());
+		assertEquals(574, superMart.getInventory().get("tomatoes").getCurrentInventory());
+		assertEquals(430, superMart.getInventory().get("lettuce").getCurrentInventory());
+		assertEquals(198, superMart.getInventory().get("grapes").getCurrentInventory());
+		assertEquals(253, superMart.getInventory().get("asparagus").getCurrentInventory());
+		assertEquals(263, superMart.getInventory().get("celery").getCurrentInventory());
+		assertEquals(571, superMart.getInventory().get("chicken").getCurrentInventory());
+		assertEquals(701, superMart.getInventory().get("beef").getCurrentInventory());
+		assertEquals(734, superMart.getInventory().get("fish").getCurrentInventory());
+		assertEquals(338, superMart.getInventory().get("yoghurt").getCurrentInventory());
+		assertEquals(549, superMart.getInventory().get("milk").getCurrentInventory());
+		assertEquals(419, superMart.getInventory().get("cheese").getCurrentInventory());
+		assertEquals(329, superMart.getInventory().get("ice cream").getCurrentInventory());
+		assertEquals(279, superMart.getInventory().get("ice").getCurrentInventory());
+		assertEquals(637, superMart.getInventory().get("frozen meat").getCurrentInventory());
+		assertEquals(509, superMart.getInventory().get("frozen vegetable mix").getCurrentInventory());
+
 	}
+
 }

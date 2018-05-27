@@ -70,15 +70,15 @@ public class Manifest {
 	 * @throws IOException
 	 *             throws an IO exception if there's something wrong in writing the
 	 *             csv
-	 * @throws DeliveryException 
+	 * @throws DeliveryException
 	 * 
 	 */
 	public void generateManifest() throws IOException, DeliveryException {
-		
+
 		// this what will keep track of item
 		// initialize as a -1 so that it will get in the while loop which is crucial
 		int extraItem = -1;
-		//counter to keep track of the loop of checking if item is reordered
+		// counter to keep track of the loop of checking if item is reordered
 		int counter = 0;
 		HashMap<String, Item> inventory = superMart.getInventory();
 		ArrayList<Item> whatToBuy = new ArrayList<Item>();
@@ -94,7 +94,7 @@ public class Manifest {
 
 		// sort the arraylist
 		whatToBuy.sort((Comparator.comparing(Item::getTemperature)));
-		
+
 		// make linked hashmap so that it is possible to put stuff based on the
 		// insertion order
 		// by using the arraylist from the whatToBuy it will be a sorted map\
@@ -103,17 +103,17 @@ public class Manifest {
 		for (Item each : whatToBuy) {
 			sortedInventory.put(each.getName(), each);
 		}
-		
-		for(String key:sortedInventory.keySet()) {
+
+		for (String key : sortedInventory.keySet()) {
 			if (sortedInventory.get(key).getCurrentInventory() <= sortedInventory.get(key).getReorderPoint()) {
-				
+
 				continue;
-			}else {
+			} else {
 				counter++;
 				continue;
 			}
 		}
-		if(counter==sortedInventory.size()) {
+		if (counter == sortedInventory.size()) {
 			throw new DeliveryException("No item need to be reordered");
 		}
 		// loop through the sorted inventory

@@ -63,7 +63,6 @@ public class TruckTest {
 		assertEquals(998, truckRefrigrated.costCalculation(10), 0.02);
 	}
 
-	// test for trying to get and set the extra item in cargo
 
 	/**
 	 * 

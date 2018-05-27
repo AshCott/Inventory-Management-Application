@@ -21,7 +21,6 @@ public class Item {
 	private double Temperature = Double.NaN;
 	private int CurrentInventory;
 	private boolean hasTemp;
-//	private int tempReorder;
 
 	/**
 	 * Create a new Refrigerated Item
@@ -150,23 +149,5 @@ public class Item {
 	public void setCurrentInventory(int number) {
 		CurrentInventory = number;
 	}
-
-//	/**
-//	 * Return the temp-reorder amount
-//	 * 
-//	 * @return int
-//	 */
-//	public int getTempReorder() {
-//		return tempReorder;
-//	}
-//
-//	/**
-//	 * Set the temp-reorder amount
-//	 * 
-//	 * @param tempNumber
-//	 */
-//	public void setTempReorderAmount(int tempNumber) {
-//		this.tempReorder = tempNumber;
-//	}
 
 }

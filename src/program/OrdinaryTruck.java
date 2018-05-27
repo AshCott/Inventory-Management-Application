@@ -73,10 +73,11 @@ public class OrdinaryTruck extends Truck {
 			this.quantity += cargoItem.getReorderAmount();
 			this.cargo.put(cargoItem.getName(), cargoItem.getReorderAmount());
 			return cargoItem.getReorderAmount();
-		} // if its more than 0 it means that the truck doesn't have enough space for
-			// reorder amount so set a new extra item which indicate there's a left over
-			// from reorder amount that hasn't been put to the cargo in cargo which are
-			// going to be used in the next loop
+		}
+		// if its more than 0 it means that the truck doesn't have enough space for
+		// reorder amount so set a new extra item which indicate there's a left over
+		// from reorder amount that hasn't been put to the cargo in cargo which are
+		// going to be used in the next loop
 		else {
 			this.setExtraItemInCargo(leftOverCapacity);
 			itemGetToCargo = (int) (this.CARGO_CAPACITY - this.quantity);
@@ -118,7 +119,7 @@ public class OrdinaryTruck extends Truck {
 	public HashMap<String, Integer> getCargo() {
 		return this.cargo;
 	}
-	
+
 	@Override
 	public int getExtraItemInCargo() {
 		return extraItem;
