@@ -90,10 +90,11 @@ public class RefrigratedTruck extends Truck {
 			this.quantity += cargoItem.getReorderAmount();
 			this.cargo.put(cargoItem.getName(), cargoItem.getReorderAmount());
 			return cargoItem.getReorderAmount();
-		} // if its more than 0 it means that the truck doesn't have enough space for
-			// reorder amount so set a new extra item which indicate there's a left over
-			// from reorder amount that hasn't been put to the cargo in cargo which are
-			// going to be used in the next loop
+		}
+		// if its more than 0 it means that the truck doesn't have enough space for
+		// reorder amount so set a new extra item which indicate there's a left over
+		// from reorder amount that hasn't been put to the cargo in cargo which are
+		// going to be used in the next loop
 		else {
 			this.setExtraItemInCargo(leftOverCapacity);
 			itemGetToCargo = (int) (this.CARGO_CAPACITY - this.quantity);
@@ -105,7 +106,6 @@ public class RefrigratedTruck extends Truck {
 
 	@Override
 	public int addItemExtraItem(Item cargoItem, int extraCargo) {
-		// System.out.println("THIS IS QUANTITY"+this.quantity);
 		int leftOverCapacity;
 		int itemGetToCargo;
 		leftOverCapacity = (int) ((extraCargo + this.quantity) - this.CARGO_CAPACITY);

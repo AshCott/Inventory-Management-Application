@@ -271,21 +271,32 @@ public class Store {
 		return temp;
 	}
 
-	// /**
-	// * ?????????
-	// * @throws IOException
-	// */
-	// public void calculateExportManifest() throws IOException {
-	// Manifest manifest = new Manifest();
-	// double manifestCost = manifest.generateManifest();
-	// }
+	/**
+	 * set capital to the desired number
+	 * 
+	 * @param capital
+	 */
+	public void setCapital(double capital) {
+		this.capital = capital;
+	}
+
+	/**
+	 * Method to reset the store capital and inventory to the start 100000 for
+	 * capital and 0 for inventory
+	 */
+	public void reset() {
+		setCapital(100000);
+		for (String key : inventory.getInventory().keySet()) {
+			inventory.getInventory().get(key).setCurrentInventory(0);
+		}
+	}
 
 	/**
 	 * exporting the manifest based on generate manifest method on the manifest
 	 * classes
 	 * 
 	 * @throws IOException
-	 * @throws DeliveryException 
+	 * @throws DeliveryException
 	 */
 	public void exportingManifest() throws IOException, DeliveryException {
 		Manifest manifest = new Manifest();
