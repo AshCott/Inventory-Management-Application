@@ -58,23 +58,32 @@ public class Manifest {
 	 * The generate manifest is a method that export the manifest to csv based on
 	 * the amount of inventory the way the method work is that it will loop through
 	 * an inventory and check if the item in the inventory is less than reorder
-	 * point if yes then reorder if not continue to the next item, afterward it will
-	 * generate a csv
+	 * point if yes then reorder if not continue to the next item, then it will put
+	 * it in to the truck based on the logic of if refrigrated truck or ordinary
+	 * truck is empty make the truck, where if the item is dry goods make ordinary
+	 * if not make refrigerated afterward check if there's leftover in either truck
+	 * then it optimize in looking at truck that already exist and filling
+	 * refrigerated truck take more priority than ordinary truck to fill in,
+	 * afterward generate a csv to be used
+	 * 
 	 * 
 	 * @throws IOException
 	 *             throws an IO exception if there's something wrong in writing the
 	 *             csv
+	 * @throws DeliveryException 
 	 * 
 	 */
-	public void generateManifest() throws IOException {
+	public void generateManifest() throws IOException, DeliveryException {
 		
 		// this what will keep track of item
 		// initialize as a -1 so that it will get in the while loop which is crucial
 		int extraItem = -1;
+		//counter to keep track of the loop of checking if item is reordered
+		int counter = 0;
 		HashMap<String, Item> inventory = superMart.getInventory();
 		ArrayList<Item> whatToBuy = new ArrayList<Item>();
 
-		// loop through inventory to get the
+		// loop through inventory to get the item that have less than reorderpoint
 		for (String key : inventory.keySet()) {
 			if (inventory.get(key).getCurrentInventory() <= inventory.get(key).getReorderPoint()) {
 				whatToBuy.add(inventory.get(key));
@@ -94,7 +103,19 @@ public class Manifest {
 		for (Item each : whatToBuy) {
 			sortedInventory.put(each.getName(), each);
 		}
-
+		
+		for(String key:sortedInventory.keySet()) {
+			if (sortedInventory.get(key).getCurrentInventory() <= sortedInventory.get(key).getReorderPoint()) {
+				
+				continue;
+			}else {
+				counter++;
+				continue;
+			}
+		}
+		if(counter==sortedInventory.size()) {
+			throw new DeliveryException("No item need to be reordered");
+		}
 		// loop through the sorted inventory
 		for (String key : sortedInventory.keySet()) {
 
@@ -321,22 +342,4 @@ public class Manifest {
 
 	}
 
-	// /**
-	// * This method will return the truck calculation
-	// *
-	// * @return
-	// */
-	// public double calculateTruckCost() {
-	// double cost = 0;
-	// for (int index = 0; index < this.refTruck.size(); index++) {
-	// cost +=
-	// this.refTruck.get(index).costCalculation(this.refTruck.get(index).getTemperature());
-	// }
-	//
-	// for (int index = 0; index < this.ornTruck.size(); index++) {
-	// cost +=
-	// this.ornTruck.get(index).costCalculation(this.ornTruck.get(index).getQuantity());
-	// }
-	// return cost;
-	// }
 }

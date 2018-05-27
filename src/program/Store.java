@@ -285,8 +285,9 @@ public class Store {
 	 * classes
 	 * 
 	 * @throws IOException
+	 * @throws DeliveryException 
 	 */
-	public void exportingManifest() throws IOException {
+	public void exportingManifest() throws IOException, DeliveryException {
 		Manifest manifest = new Manifest();
 		manifest.generateManifest();
 	}

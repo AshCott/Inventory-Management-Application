@@ -7,6 +7,13 @@ import java.util.List;
 import org.junit.*;
 import program.*;
 
+/**
+ * Testing the truck if it can handle all kind of items and getting left over
+ * needed for generate manifest logic
+ * 
+ * @author Radhimas Djan
+ * 
+ */
 public class TruckTest {
 	Truck truck;
 	OrdinaryTruck truckOrdinary;
@@ -19,14 +26,6 @@ public class TruckTest {
 		truckRefrigrated = new RefrigratedTruck();
 		temp = new Item(null, 0, 0, 0, 0);
 
-	}
-
-	/**
-	 * Test for trying to instatiate an abstract class
-	 */
-	@Test(expected = java.lang.Error.class)
-	public void createAbstractTruck() {
-		Truck truck = new Truck();
 	}
 
 	/**
