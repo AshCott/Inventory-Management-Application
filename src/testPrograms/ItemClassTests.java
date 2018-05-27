@@ -27,7 +27,7 @@ public class ItemClassTests {
 	Item item;
 
 	/**
-	 * Constuct sample Item
+	 * Construct sample Item
 	 */
 	@Before
 	public void constructor() {
@@ -92,11 +92,5 @@ public class ItemClassTests {
 	public void hasTempreture() {
 		assertEquals("hasTempreture is Incorrect", true, item.hasTempreture());
 	}
-	
- 	@Test
-	public void exportManifest() throws IOException, CSVFormatException, DeliveryException{
-		superMart.creatInventory("item_properties.csv");
-		manifest.generateManifest();
-//		System.out.println(superMart.getInventory().size());
-	}	
+
 }
