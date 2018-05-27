@@ -8,6 +8,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import program.CSVFormatException;
+import program.DeliveryException;
 import program.IOCSV;
 import program.Manifest;
 import program.Store;
@@ -93,7 +94,7 @@ public class ItemClassTests {
 	}
 	
  	@Test
-	public void exportManifest() throws IOException, CSVFormatException{
+	public void exportManifest() throws IOException, CSVFormatException, DeliveryException{
 		superMart.creatInventory("item_properties.csv");
 		manifest.generateManifest();
 //		System.out.println(superMart.getInventory().size());

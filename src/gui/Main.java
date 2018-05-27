@@ -234,7 +234,7 @@ public class Main {
 					inpManifestBtn.setEnabled(true);
 					superMart.exportingManifest();
 					JOptionPane.showMessageDialog(mainFrame, "Exported Manifest Successfully to exportManifest.csv");
-				} catch (IOException e1) {
+				} catch (Exception e1) {
 					JOptionPane.showMessageDialog(mainFrame, e1.getMessage(), e1.getClass().getName(), JOptionPane.ERROR_MESSAGE);
 				}
 				break;
