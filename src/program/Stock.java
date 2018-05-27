@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-@SuppressWarnings("rawtypes")
 /**
  * Stock is a collection of item where it is used for method related with
  * multiple item

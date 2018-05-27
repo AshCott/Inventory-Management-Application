@@ -6,7 +6,6 @@ package program;
  * @author Ashley Cottrell
  * @author Radhimas Djan
  */
-@SuppressWarnings("serial")
 public class DeliveryException extends Exception {
 
 	/**

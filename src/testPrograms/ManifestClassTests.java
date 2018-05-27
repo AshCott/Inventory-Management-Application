@@ -19,7 +19,7 @@ import program.Store;
 import program.Truck;
 
 /**
- * 
+ * Manifest Test Class 
  * @author Radhimas Djan
  *
  */

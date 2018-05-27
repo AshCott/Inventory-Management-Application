@@ -1,12 +1,11 @@
 package program;
 
 /**
- * 
+ * Throw CSV Format Exception Error
  * @author Ashley Cottrell
  * @author Radhimas Djan
  *
  */
-@SuppressWarnings("serial")
 public class CSVFormatException extends Exception {
 
 	/**

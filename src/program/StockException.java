@@ -7,7 +7,6 @@ package program;
  * @author Radhimas Djan
  *
  */
-@SuppressWarnings("serial")
 public class StockException extends Exception {
 
 	/**

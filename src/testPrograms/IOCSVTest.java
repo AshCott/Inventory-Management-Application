@@ -12,8 +12,6 @@ import org.junit.Test;
 import program.CSVFormatException;
 import program.IOCSV;
 
-@SuppressWarnings({ "rawtypes", "unused" })
-
 /**
  * Testing the importer on whether or not it can correctly import files and that
  * it is able to handle incorrect CSV files
@@ -216,7 +214,7 @@ public class IOCSVTest {
 	}
 
 	/**
-	 * Tempreture Below -20 Degrees
+	 * Temperature  Below -20 Degrees
 	 * 
 	 * @throws IOException
 	 * @throws CSVFormatException

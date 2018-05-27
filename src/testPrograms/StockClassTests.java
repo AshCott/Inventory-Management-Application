@@ -10,8 +10,6 @@ import org.junit.Test;
 
 import program.Stock;
 
-@SuppressWarnings("rawtypes")
-
 /**
  * Tests for stock class
  * 

@@ -35,6 +35,7 @@ public class StoreClassTests {
 	public void GetStoreCapital() {
 		Store superMart;
 		superMart = Store.getInstance();
+		superMart.reset();
 		assertEquals("$100,000.00", superMart.getStoreCapital());
 	}
 
@@ -258,4 +259,80 @@ public class StoreClassTests {
 		assertEquals("$84,731.88", superMart.getStoreCapital());
 	}
 
+	/**
+	 * Test if exception is thrown when sales log item doesn't exists within the
+	 * inventory
+	 * 
+	 * @throws IOException
+	 * @throws CSVFormatException
+	 * @throws DeliveryException
+	 * @throws StockException
+	 */
+	@Test(expected = StockException.class)
+	public void Sales_Log_itemDoesntExist() throws IOException, CSVFormatException, DeliveryException, StockException {
+		Store superMart;
+		superMart = Store.getInstance();
+		superMart.creatInventory("item_properties.csv");
+		superMart.reset();
+		superMart.exportingManifest();
+		superMart.importManifest("exportManifest.csv");
+		superMart.importSalesLog("csv_failed_tests/saleslog_Item_Doesnt_Exist.csv");
+	}
+
+	/**
+	 * Test if inventory has enough items to sell. i.e. inventory = 10 & SalesLog =
+	 * 20 you can't sell 10 more than what you have
+	 * 
+	 * @throws IOException
+	 * @throws CSVFormatException
+	 * @throws DeliveryException
+	 * @throws StockException
+	 */
+	@Test(expected = StockException.class)
+	public void Sales_Log_Inventory_less_than_Log()
+			throws IOException, CSVFormatException, DeliveryException, StockException {
+		Store superMart;
+		superMart = Store.getInstance();
+		superMart.creatInventory("item_properties.csv");
+		superMart.reset();
+		superMart.importSalesLog("csv_failed_tests/saleslog_Item_Doesnt_Exist.csv");
+	}
+
+	/**
+	 * Test if exception is thrown when item in an imported manifest doesn't exist
+	 * in the inventory
+	 * 
+	 * @throws IOException
+	 * @throws CSVFormatException
+	 * @throws StockException
+	 * @throws DeliveryException
+	 */
+	@Test(expected = DeliveryException.class)
+	public void manifest_Item_Exists() throws IOException, CSVFormatException, StockException, DeliveryException {
+		Store superMart;
+		superMart = Store.getInstance();
+		superMart.creatInventory("item_properties.csv");
+		superMart.reset();
+		superMart.importManifest("csv_failed_tests/manifest_Item_not_Exists.csv");
+	}
+
+	/**
+	 * Test if exception is thrown when an item isn't needed to be reorderd
+	 * 
+	 * @throws IOException
+	 * @throws CSVFormatException
+	 * @throws StockException
+	 * @throws DeliveryException
+	 */
+	@Test(expected = DeliveryException.class)
+	public void ExportManifest_No_Item_Need_Reorder()
+			throws IOException, CSVFormatException, StockException, DeliveryException {
+		Store superMart;
+		superMart = Store.getInstance();
+		superMart.creatInventory("item_properties.csv");
+		superMart.reset();
+		superMart.exportingManifest();
+		superMart.importManifest("exportManifest.csv");
+		superMart.exportingManifest();
+	}
 }

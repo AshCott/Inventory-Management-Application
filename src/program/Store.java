@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-@SuppressWarnings("rawtypes")
 /**
  * Store is the class that represent the SuperMart store where every method that
  * related to changing inventory, capital of the store is in here
